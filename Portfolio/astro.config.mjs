@@ -1,15 +1,11 @@
-// @ts-check
-
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 
-import vercel from '@astrojs/vercel';
+// SIN import vercel ni adapter: vercel()
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://portfolio-luis-eduardo-gutierrez-arias-4dp1l2096.vercel.app',
-  output: 'static', 
   integrations: [mdx(), sitemap()],
 
   fonts: [
