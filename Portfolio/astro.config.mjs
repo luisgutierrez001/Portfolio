@@ -8,7 +8,8 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://portfolio-luis-eduardo-gutierrez-arias-4dp1l2096.vercel.app',
+  output: 'static', 
   integrations: [mdx(), sitemap()],
 
   fonts: [
