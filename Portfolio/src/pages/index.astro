@@ -2,6 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import MainCarrucel from '../components/MainCarrucel.astro';
+import AboutSection from '../components/AboutSection.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
@@ -15,22 +17,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<div class = "container">
-			<section class = "main-section">
-				<div class = "main-vid">
-					<video loop autoplay muted plays-inline class = "main-video">
-						<source src="/videos/hero-video.mp4" type="video/mp4" />
-					</video>
-				</div>
-
-				<div class = "main-info">
-					<h1>{SITE_TITLE}</h1>
-					<p>{SITE_DESCRIPTION}</p>
-					<button>Get Started</button>
-				</div>
-
-				<h1 class = "main-text">Software Engineer</h1>
-			</section>
-			
+			<MainCarrucel />
+			<AboutSection />
 		</div>
 		<Footer />
 	</body>

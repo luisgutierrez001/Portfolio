@@ -1,0 +1,125 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+
+<section class="main-section">
+  <div class="main-vid">
+        <video loop autoplay muted plays-inline class="main-video">
+            <source src="/videos/hero-video.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="main-info">
+    <h1>{SITE_TITLE}</h1>
+    <p>{SITE_DESCRIPTION}</p>
+    <button>Get Started</button>
+  </div>
+
+  <h1 class="main-text">Software Engineer</h1>
+  <div class="next-btn">Next</div>
+</section>
+
+<script src="/scripts/main.js" defer></script>
+
+
+<style>
+    /* Main section */
+
+.main-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-vid {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-info {
+    z-index: 1;
+    position: absolute;
+    top: 80px;
+    left: 50px;
+}
+
+.main-info h1 {
+    font-size: 120px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.main-info p {
+    color: white;
+    max-width: 210px;
+}
+
+.main-info button {
+    background-color: #967cf3;
+    border: 2px solid #967cf3;
+    padding: 10px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: black;
+    transition: 0.3s;
+}
+
+.main-info button:hover {
+    background-color: transparent;
+    color: white;
+    border: 0 0 15px #967cf3;
+}
+
+
+.main-text {
+    font-size: 120px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+}
+
+
+.next-btn {
+    width: 200px;
+    height: 200px;
+    background-color: #967cf3;
+    position: absolute;
+    left: 45%;
+    bottom: 45%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+
+.next-btn:hover {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.616);
+}
+</style>
+
+
