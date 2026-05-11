@@ -14,64 +14,6 @@ body{
     position: relative;
 }
 
-/* Main section */
-
-.main-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.main-vid {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.main-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.main-info {
-    z-index: 1;
-    position: absolute;
-    top: 80px;
-    left: 50px;
-}
-
-.main-info h1 {
-    font-size: 120px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 900;
-    font-style: normal;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-.main-info p {
-    color: white;
-    max-width: 210px;
-}
-
-.main-info button {
-    background-color: #967cf3;
-    border: 2px solid #967cf3;
-    padding: 10px 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: black;
-    transition: 0.3s;
-}
-
-.main-info button:hover {
-    background-color: transparent;
-    color: white;
-    border: 0 0 15px #967cf3;
-}
-
 
 
 
