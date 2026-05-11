@@ -5,7 +5,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 // SIN import vercel ni adapter: vercel()
 
 export default defineConfig({
-  site: 'https://portfolio-luis-eduardo-gutierrez-arias-4dp1l2096.vercel.app',
+  site: 'https://portfolio-luis-eduardo-gutierrez-ar.vercel.app',
   integrations: [mdx(), sitemap()],
 
   fonts: [
