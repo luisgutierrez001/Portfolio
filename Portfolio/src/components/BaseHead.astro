@@ -24,6 +24,10 @@ const { title, description, image = FallbackImage } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+
 <link
 	rel="alternate"
 	type="application/rss+xml"
@@ -55,3 +59,6 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+
+
