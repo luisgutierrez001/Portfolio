@@ -1,22 +1,27 @@
-const nextButton = document.querySelector('.next-btn');
-const video = document.querySelector('.main-video');
-
-const movieList = [
-    '/videos/hero-video.mp4',
-    '/videos/movie1.mp4',
-    '/videos/movie2.mp4',
-    '/videos/movie3.mp4'
-];
+const navMenu = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close');
 
 
-let index = 0;
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu')
+    })
+}
 
-nextButton.addEventListener('click', function() {
-    index += 1;
+if (navClose) {
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu')
+    })
+}
 
-    if (index >= movieList.length) {
-        index = 0;
-    }
 
-    video.src = movieList[index];
-});
+/*==================== REMOVE MENU MOBILE ====================*/
+const navLink = document.querySelectorAll('.nav__link')
+
+function linkAction(){
+    const navMenu = document.getElementById('nav-menu')
+    // When we click on each nav__link, we remove the show-menu class
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction))
