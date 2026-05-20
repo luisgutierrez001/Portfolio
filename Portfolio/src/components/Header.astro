@@ -1,77 +1,146 @@
----
-import "../styles/main.css";
----
-
 <div class="container">
-  <header>
-    <div class="head-left">
-      <img src="/images/profile-pic.jpg" alt="Profile Picture" />
-      <!-- <h2><a href="/">{SITE_TITLE}</a></h2> -->
-      <button>Information</button>
-    </div>
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">Luis Eduardo Gutiérrez Arias</a>
 
-    <div class="head-right">
-      <p><a href="#">About Me</a></p>
-      <p><a href="#">Studies</a></p>
-      <p><a href="#">Projects</a></p>
-      <p><a href="#">Trayectory</a></p>
-    </div>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list grid">
+          <li class="nav__item">
+            <a href="#home" class="nav__link"
+              ><i class="uil uil-home nav__icon"></i>Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link"
+              ><i class="uil uil-user-md nav__icon"></i>About</a>
+          </li>
+          <li class="nav__item">
+            <a href="#skills" class="nav__link"
+              ><i class="uil uil-book-alt nav__icon"></i>Skills</a>
+          </li>
+          <li class="nav__item">
+            <a href="#projects" class="nav__link"
+              ><i class="uil uil-suitcase-alt nav__icon"></i>Projects</a>
+          </li>
+          <li class="nav__item">
+            <a href="#blog" class="nav__link"
+              ><i class="uil uil-images nav__icon"></i>Blog</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contactme" class="nav__link"
+              ><i class="uil uil-envelope-add nav__icon"></i>Contactme</a>
+          </li>
+        </ul>
+        <i class="uil uil-times-circle nav__close" id="nav-close"></i>
+      </div>
+
+      <div class="nav__btns">
+        <!-- Theme change button -->
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="uil uil-apps"></i>
+        </div>
+      </div>
+    </nav>
   </header>
+
+  <style>
+    .container {
+      max-width: 768px;
+      margin-left: var(--mb-1-5);
+      margin-right: var(--mb-1-5);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .header {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: var(--z-fixed);
+      background-color: var(--body-color);
+    }
+
+    .nav {
+      max-width: 968px;
+      height: var(--header-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav__logo,
+    .nav__toggle {
+      color: var(--title-color);
+      font-weight: var(--font-medium);
+    }
+
+    .nav__logo:hover {
+      color: var(--first-color);
+    }
+
+    .nav__toggle {
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .nav__toggle:hover {
+      color: var(--first-color);
+    }
+
+    @media screen and (max-width: 767px) {
+      .nav__menu {
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--body-color);
+        padding: 2rem 1.5rem 4rem;
+        box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+        border-radius: 1.5rem 1.5rem 0;
+        transition: 0.3s;
+      }
+    }
+
+    .nav__list {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .nav__link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: var(--small-font-size);
+      color: var(--title-color);
+      font-weight: var(--font-medium);
+    }
+
+    .nav__link:hover {
+      color: var(--first-color);
+    }
+
+    .nav__icon {
+      font-size: 1.2rem;
+    }
+
+    .nav__close {
+      position: absolute;
+      right: 1.3rem;
+      bottom: .5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--first-color);
+    }
+
+    .nav__close:hover {
+      color: var(--first-color-alt);
+    }
+
+    .show-menu {
+      bottom: 0;
+    }
+
+  </style>
 </div>
-
-<style>
-  header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 40px;
-    z-index: 999;
-    background-color: #4b4b4b5b;
-    backdrop-filter: blur(10px);
-  }
-
-  .head-left {
-    display: flex;
-    align-items: center;
-  }
-
-  .head-left img {
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
-    border-radius: 50%;
-  }
-
-  .head-left button {
-    border: none;
-    padding: 10px 30px;
-    border-radius: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .head-left button:hover {
-    opacity: 0.7;
-  }
-  .head-right {
-    display: flex;
-  }
-
-  .head-right a {
-    text-decoration: none;
-    padding-left: 25px;
-    color: white;
-    font-size: 15px;
-  }
-
-  /* .head-left h2 a {
-	font-size: 20px;
-	color: #fff;
-	text-decoration: none;
-} */
-</style>
