@@ -6,8 +6,23 @@
   --header-height: 3rem;
 
   /*========== Colors ==========*/
-  /* Change favorite color */
-  --hue-color: 250;
+    --hue-color: 210;
+  /* Change favorite color 
+
+
+  --hue-color: 210;
+
+  --hue-color: 200;
+
+  --hue-color: 40;
+
+  --hue-color: 120;
+
+  --hue-color: 160;
+
+  --hue-color: 0;
+
+  */
   /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
   /* HSL color mode */
