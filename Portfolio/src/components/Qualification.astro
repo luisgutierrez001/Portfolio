@@ -20,7 +20,7 @@
 
       <div class = "qualification__sections">
         <!-- =================== QUALIFICATION CONTENT 1 =================== -->
-        <div class="qualification__content">
+        <div class="qualification__content qualification__active" data-content id="education">
 
           <!-- =================== QUALIFICATION 1 =================== -->
           <div class="qualification__data">
@@ -100,7 +100,7 @@
       </div>
 
               <!-- =================== QUALIFICATION CONTENT 2 =================== -->
-        <div class="qualification__content">
+        <div class="qualification__content" data-content id="work">
 
           <!-- =================== QUALIFICATION 1 =================== -->
           <div class="qualification__data">
@@ -220,6 +220,18 @@
     height: 100%;
     background-color: var(--first-color);
     transform: translate(6px, -7px);
+  }
+
+  .qualification[data-content]{
+    display: none;
+  }
+
+  .qualification__active[data-content]{
+    display: block;
+  }
+
+  .qualification__button.qualification__active {
+    color: var(--first-color);
   }
 
 </style>
