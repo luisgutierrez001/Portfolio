@@ -14,30 +14,47 @@ import { experiences } from '../data/profile';
 
     <div class="experience__timeline">
       {
-        experiences.map((item) => (
+        experiences.map((item, index) => (
           <article class="experience__item">
             <div class="experience__marker" aria-hidden="true"></div>
 
-            <div class="experience__content">
-              <div class="experience__meta">
-                <span data-i18n={`experience.${experiences.indexOf(item)}.type`}>{item.type}</span>
-                <span data-i18n={`experience.${experiences.indexOf(item)}.period`}>{item.period}</span>
+            <div class={`experience__content ${item.media.length > 0 ? 'experience__content--with-media' : ''}`}>
+              <div class="experience__details">
+                <div class="experience__meta">
+                  <span data-i18n={`experience.${index}.type`}>{item.type}</span>
+                  <span data-i18n={`experience.${index}.period`}>{item.period}</span>
+                </div>
+
+                <div class="experience__header">
+                  <h3 data-i18n={`experience.${index}.role`}>{item.role}</h3>
+                  <p>{item.company} · <span data-i18n={`experience.${index}.location`}>{item.location}</span></p>
+                </div>
+
+                <p class="experience__description" data-i18n={`experience.${index}.description`}>{item.description}</p>
+
+                <ul class="experience__highlights">
+                  {item.highlights.map((highlight, highlightIndex) => (
+                    <li data-i18n={`experience.${index}.highlight.${highlightIndex}`}>{highlight}</li>
+                  ))}
+                </ul>
+
+                <ul class="experience__stack" aria-label={`Tecnologias y procesos en ${item.company}`}>
+                  {item.stack.map((tech) => <li>{tech}</li>)}
+                </ul>
               </div>
 
-              <div class="experience__header">
-                <h3 data-i18n={`experience.${experiences.indexOf(item)}.role`}>{item.role}</h3>
-                <p>{item.company} · <span data-i18n={`experience.${experiences.indexOf(item)}.location`}>{item.location}</span></p>
-              </div>
-
-              <p class="experience__description" data-i18n={`experience.${experiences.indexOf(item)}.description`}>{item.description}</p>
-
-              <ul class="experience__highlights">
-                {item.highlights.map((highlight) => <li data-i18n={`experience.${experiences.indexOf(item)}.highlight.${item.highlights.indexOf(highlight)}`}>{highlight}</li>)}
-              </ul>
-
-              <ul class="experience__stack" aria-label={`Tecnologias y procesos en ${item.company}`}>
-                {item.stack.map((tech) => <li>{tech}</li>)}
-              </ul>
+              {
+                item.media.length > 0 && (
+                  <aside
+                    class={`experience__media experience__media--${Math.min(item.media.length, 3)}`}
+                    aria-label={`Momentos de ${item.company}`}
+                  >
+                    {item.media.slice(0, 3).map((image) => (
+                      <img src={image.src} alt={image.alt} loading="lazy" />
+                    ))}
+                  </aside>
+                )
+              }
             </div>
           </article>
         ))
@@ -94,9 +111,15 @@ import { experiences } from '../data/profile';
 
   .experience__content {
     display: grid;
-    gap: .85rem;
+    gap: 1.15rem;
     padding: 1.25rem 0 1.5rem;
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .experience__details {
+    display: grid;
+    gap: .85rem;
+    min-width: 0;
   }
 
   .experience__meta {
@@ -160,9 +183,85 @@ import { experiences } from '../data/profile';
     font-size: var(--smaller-font-size);
   }
 
+  .experience__media {
+    position: relative;
+    width: min(100%, 18rem);
+    min-height: 9rem;
+    justify-self: start;
+    isolation: isolate;
+  }
+
+  .experience__media::before {
+    content: '';
+    position: absolute;
+    inset: .75rem -.5rem -.5rem .75rem;
+    z-index: -1;
+    border: 1px solid rgba(85, 157, 226, .28);
+    border-radius: .75rem;
+  }
+
+  .experience__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 9rem;
+    border-radius: .7rem;
+    object-fit: cover;
+    box-shadow: 0 14px 28px rgba(39, 62, 84, .12);
+  }
+
+  .experience__media--1 {
+    aspect-ratio: 16 / 9;
+    transform: rotate(-1deg);
+  }
+
+  .experience__media--2 {
+    height: 12rem;
+  }
+
+  .experience__media--2 img {
+    position: absolute;
+    width: 72%;
+    height: 76%;
+    min-height: 0;
+  }
+
+  .experience__media--2 img:first-child {
+    top: 0;
+    left: 0;
+    transform: rotate(-2deg);
+  }
+
+  .experience__media--2 img:last-child {
+    right: 0;
+    bottom: 0;
+    border: 4px solid var(--body-color);
+    transform: rotate(2deg);
+  }
+
+  .experience__media--3 {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    grid-template-rows: 1fr 1fr;
+    gap: .35rem;
+    height: 12rem;
+    transform: rotate(-1deg);
+  }
+
+  .experience__media--3 img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    border-radius: .5rem;
+  }
+
+  .experience__media--3 img:first-child {
+    grid-row: 1 / 3;
+  }
+
   @media screen and (min-width: 768px) {
     .experience__timeline {
-      max-width: 900px;
+      max-width: 1040px;
       margin: 0 auto;
     }
 
@@ -173,6 +272,40 @@ import { experiences } from '../data/profile';
 
     .experience__content {
       padding: 1.4rem 0 1.75rem;
+    }
+
+    .experience__content--with-media {
+      grid-template-columns: minmax(0, 1fr) minmax(170px, 220px);
+      align-items: center;
+      column-gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .experience__media {
+      justify-self: end;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .experience__item {
+      gap: .7rem;
+    }
+
+    .experience__content {
+      padding-top: .75rem;
+    }
+
+    .experience__meta {
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    .experience__media {
+      width: calc(100% - .5rem);
+    }
+
+    .experience__media--2,
+    .experience__media--3 {
+      height: 10rem;
     }
   }
 </style>

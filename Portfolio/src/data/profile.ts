@@ -29,7 +29,7 @@ export const profile = {
 	],
 	stats: [
 		{ value: '2+', label: 'experiencias profesionales' },
-		{ value: '5+', label: 'modulos desarrollados' },
+		{ value: '5', label: 'proyectos desarrollados' },
 		{ value: '7+', label: 'certificaciones' },
 	],
 	focus: [
@@ -45,9 +45,9 @@ export const aboutStories = [
 		title: 'Invitacion a Talent Land Mexico',
 		category: 'Evento tecnologico',
 		description:
-			'Fui invitado junto con miembros de mi equipo de trabajo a Talent Land Mexico, un espacio donde pude conocer nuevas ideas sobre tecnologia, oportunidades profesionales y aprendizajes aplicados a la industria.',
+			'Una experiencia con mi equipo para descubrir tecnologia, oportunidades y nuevas ideas aplicadas a la industria.',
 		lesson:
-			'Refuerzo mi vision de crecimiento: aprender de otros, observar tendencias y conectar la tecnologia con problemas reales.',
+			'Aprender de otros y conectar tendencias con problemas reales.',
 		image: 'images/1781679236045.jpeg',
 		icon: 'uil-rocket',
 	},
@@ -55,20 +55,20 @@ export const aboutStories = [
 		title: 'Creacion de videojuego',
 		category: 'Proyecto institucional',
 		description:
-			'Participe junto a un colega de trabajo en el desarrollo de un videojuego que presentamos a nivel institucional, combinando creatividad, logica, colaboracion y aprendizaje practico.',
+			'Desarrolle junto a un colega un videojuego presentado a nivel institucional, combinando creatividad, logica y colaboracion.',
 		lesson:
-			'Me ayudo a entender mejor el ciclo completo de un producto: idea, construccion, ajustes, presentacion y retroalimentacion.',
-		image: 'images/1781679236045.jpeg',
+			'Comprender el ciclo completo: idea, construccion, ajustes y presentacion.',
+		image: 'images/mapa.png',
 		icon: 'uil-game-structure',
 	},
 	{
 		title: 'Concurso de programacion',
 		category: 'Logro academico',
 		description:
-			'Fui seleccionado para participar en un concurso de programacion a nivel institucional, donde logre quedar en el podio y confirme que la practica constante se transforma en resultados.',
+			'Alcance el podio en un concurso institucional de programacion gracias a la practica constante y el trabajo bajo presion.',
 		lesson:
-			'Me dejo aprendizajes tecnicos, disciplina bajo presion y la seguridad de que el esfuerzo bien dirigido da frutos.',
-		image: '/certifications/PODRIO-3-LUGAR',
+			'Disciplina, confianza y mejores decisiones tecnicas bajo presion.',
+		image: 'images/concurso.jpg',
 		icon: 'uil-award',
 	},
 ];
@@ -134,64 +134,64 @@ export const skillGroups = [
 
 export const projects = [
 	{
-		title: 'Victoria 147',
-		type: 'Plataforma empresarial',
+		title: 'Plataforma Victoria147',
+		type: 'Plataforma comunitaria',
 		description:
-			'Plataforma de gestion de personal y operacion interna con multiples modulos administrativos.',
+			'Plataforma digital que conecta y fortalece una comunidad de mujeres emprendedoras mediante directorios, perfiles de negocio, productos, servicios, beneficios y actividades.',
 		impact:
-			'Participe en interfaces responsivas, navegacion, jerarquia de contenido e integracion con APIs para manejo dinamico de datos.',
-		stack: ['JavaScript', 'PHP', 'MySQL', 'APIs REST', 'CSS'],
-		image: '',
-		demoUrl: '',
-		repoUrl: '',
+			'Centralizamos la comunidad, aumentamos la visibilidad de sus negocios y habilitamos la gestion de contenido, usuarios, permisos y recuperacion de cuentas.',
+		stack: ['Node.js', 'JavaScript', 'Moleculer', 'REST API', 'MySQL', 'MongoDB', 'Sequelize', 'NATS', 'JWT', 'Handlebars', 'Jest', 'PM2'],
+		images: ['/images/victoria-one.png', '/images/victoria-two.png', '/images/victoria-three.png'],
+		demoUrl: 'https://victoria147-dev.plataforma-empresarial.com/',
+		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_Plataforma_Victoria147',
 	},
 	{
-		title: 'Sistema RH y Checador',
-		type: 'Sistema administrativo',
+		title: 'Checador VLIM',
+		type: 'Plataforma de RH',
 		description:
-			'Sistema interno para asistencia, expedientes, permisos, activos y control operativo de usuarios.',
+			'Plataforma interna para asistencia y Recursos Humanos con reconocimiento facial, horarios, incidencias, permisos, vacaciones y flujos de aprobacion.',
 		impact:
-			'Desarrolle y mantuve modulos clave, optimice consultas MySQL para reportes y mejore logica de negocio del sistema.',
-		stack: ['PHP', 'JavaScript', 'MySQL', 'Reconocimiento facial', 'Reportes'],
-		image: '',
-		demoUrl: '',
-		repoUrl: '',
+			'Automatizamos controles manuales, reportes de horas, notificaciones y administracion de colaboradores, cursos y activos con integraciones empresariales.',
+		stack: ['Node.js', 'JavaScript', 'Moleculer', 'MySQL', 'Sequelize', 'AWS S3', 'Rekognition', 'JWT', 'REST API', 'NATS', 'ExcelJS', 'PDF-Lib'],
+		images: ['/images/checador-one.png', '/images/checador-two.png', '/images/checador-three.png', '/images/checador-four.png', '/images/checador-five.png'],
+		demoUrl: 'https://sapo.vlim.mx/',
+		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_ChecadorVLIM',
 	},
 	{
-		title: 'SaborBot',
-		type: 'Aplicacion web academica',
+		title: 'Beyserin Consulting',
+		type: 'Sitio web corporativo',
 		description:
-			'Aplicacion enfocada en gastronomia mexicana con chatbot, recetas personalizadas y busqueda inteligente.',
+			'Sitio corporativo para una consultora especializada en tecnologia, desarrollo de software, soluciones empresariales y captacion de talento TI.',
 		impact:
-			'Construccion de interfaz responsiva, integracion de APIs internas y experiencia conversacional para guiar recetas.',
-		stack: ['Next.js', 'Tailwind CSS', 'APIs', 'Chatbot', 'UX'],
-		image: '',
-		demoUrl: '',
-		repoUrl: '',
+			'Creamos una presencia digital profesional, servicios claros, experiencia responsiva, optimizacion SEO y solicitudes de contacto automatizadas por correo.',
+		stack: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5', 'PHP', 'PHPMailer', 'SMTP', 'Apache'],
+		images: ['/images/beyserin-one.png', '/images/beyserin-two.png', '/images/beyserin-three.png'],
+		demoUrl: 'https://beyserinconsulting.com/',
+		repoUrl: 'https://github.com/GitVlimMaster/PAGWEB_Beyserin26',
 	},
 	{
-		title: 'Axolote',
-		type: 'Analisis de datos',
+		title: 'Grupo Landeros',
+		type: 'Gestion y punto de venta',
 		description:
-			'Modelo predictivo de incidentes en el Estado de Mexico con limpieza, analisis y visualizacion de datos.',
+			'Sistema integral para una cadena de carnicerias que centraliza ventas, inventarios, clientes, creditos, compras, produccion y control de caja.',
 		impact:
-			'Analice patrones por zona, hora, dia y genero, conectando pipeline de datos con reportes ejecutivos.',
-		stack: ['Node.js', 'Python', 'Power BI', 'DuckDB', 'DBeaver'],
-		image: '',
-		demoUrl: '',
-		repoUrl: '',
+			'Aportamos una solucion modular que mejora la trazabilidad, reduce procesos manuales y facilita la administracion de distintas sucursales.',
+		stack: ['React', 'Vite', 'Material UI', 'Node.js', 'Moleculer', 'PostgreSQL', 'JWT', 'AWS S3', 'WebSockets', 'Impresion termica'],
+		images: ['/images/landeros-one.png', '/images/landeros-two.png', '/images/landeros-three.png'],
+		demoUrl: 'https://dev.landysystem.com.mx/login',
+		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_LandiSystem',
 	},
 	{
-		title: 'Landeros - Cazuelon',
-		type: 'Sitio web comercial',
+		title: 'El Cazuelon',
+		type: 'Gestion para restaurante',
 		description:
-			'Layout visual responsivo para mejorar la presencia digital de un negocio local.',
+			'Sistema para punto de venta, mesas, reservaciones, comandas de cocina, menu, cobro, division de cuentas, cancelaciones y permisos.',
 		impact:
-			'Desarrolle una experiencia frontend atractiva, funcional y optimizada para rendimiento y accesibilidad.',
-		stack: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-		image: '',
-		demoUrl: '',
-		repoUrl: '',
+			'Conectamos meseros, cocina y caja para agilizar el servicio y brindar mayor control sobre cada pedido, comanda y ticket.',
+		stack: ['React', 'Vite', 'Material UI', 'Node.js', 'Moleculer', 'PostgreSQL', 'WebSockets', 'JWT', 'Impresion de tickets'],
+		images: ['/images/cazuelon-one.png', '/images/cazuelon-two.png', '/images/cazuelon-three.png'],
+		demoUrl: 'https://pos-dev.landysystem.com.mx/login',
+		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_LandiSystem',
 	},
 ];
 
@@ -203,13 +203,18 @@ export const experiences = [
 		location: 'Mexico',
 		type: 'Profesional',
 		description:
-			'Desarrollo y mantenimiento de plataformas web empresariales orientadas a gestion de personal, operacion interna y mejora de procesos administrativos.',
+			'Desarrollo y mejora de plataformas web empresariales, participando en modulos clave para comunidades, gestion de personal y operacion interna.',
 		highlights: [
-			'Desarrollo de modulos para asistencia, permisos, expedientes, activos, actividades, empresas y productos.',
-			'Integracion con APIs, manejo dinamico de datos y mejora de interfaces responsivas.',
-			'Optimizacion de consultas MySQL, reportes operativos y ajustes en logica de negocio.',
+			'Desarrollo y mantenimiento de modulos de administracion y usuario.',
+			'Validacion y sanitizacion de datos, mejora de formularios e interfaces responsivas.',
+			'Depuracion, pruebas funcionales, documentacion tecnica y mejora continua.',
 		],
-		stack: ['JavaScript', 'PHP', 'MySQL', 'APIs REST', 'CSS'],
+		stack: ['Node.js', 'JavaScript', 'Moleculer', 'MySQL', 'MongoDB', 'REST API'],
+		media: [
+			{ src: '/images/vlim-one.jpeg', alt: 'Luis junto a integrantes de su equipo de trabajo' },
+			{ src: '/images/vlim-two.jpeg', alt: 'Luis junto a integrantes de su equipo de trabajo' },
+			{ src: '/images/vlim-three.jpeg', alt: 'Luis junto a integrantes de su equipo de trabajo' },
+		],
 	},
 	{
 		role: 'Desarrollador Full-Stack',
@@ -218,13 +223,14 @@ export const experiences = [
 		location: 'Mexico',
 		type: 'Profesional',
 		description:
-			'Desarrollo de un sistema web para gestion medica con administracion de citas, pacientes, personal y acceso multiusuario.',
+			'Lidere el desarrollo de un sistema web para gestion medica de citas, pacientes y personal, implementado bajo metodologia XP.',
 		highlights: [
-			'Implementacion de roles, permisos administrativos y autenticacion segura.',
-			'Despliegue y configuracion de servidor propio para acceso por red.',
-			'Trabajo bajo metodologia XP con ciclos iterativos y entregas continuas.',
+			'Desarrollo full-stack del sistema medico y sus flujos administrativos.',
+			'Implementacion de roles, permisos y autenticacion segura.',
+			'Despliegue en servidor propio para acceso multiusuario mediante red.',
 		],
-		stack: ['Full Stack', 'Autenticacion', 'Servidores', 'XP', 'Base de datos'],
+		stack: ['Full Stack', 'Autenticacion', 'Base de datos', 'Servidores', 'XP'],
+		media: [],
 	},
 	{
 		role: 'Desarrollador de proyectos academicos',
@@ -235,11 +241,15 @@ export const experiences = [
 		description:
 			'Participacion en soluciones web y de datos enfocadas en productos funcionales, analisis de informacion y experiencias de usuario.',
 		highlights: [
-			'Desarrollo de SaborBot con interfaz conversacional, recetas personalizadas e integracion de APIs.',
-			'Analisis de datos para Axolote con visualizacion ejecutiva y deteccion de patrones.',
+			'Desarrollo colaborativo de un videojuego presentado a nivel institucional.',
+			'Participacion y posicion en el podio de un concurso institucional de programacion.',
 			'Colaboracion en equipo, documentacion tecnica y control de versiones.',
 		],
-		stack: ['Next.js', 'Tailwind CSS', 'Node.js', 'Python', 'Power BI'],
+		stack: ['JavaScript', 'Desarrollo web', 'Logica', 'Git', 'Trabajo colaborativo'],
+		media: [
+			{ src: '/images/uttec-one.jpeg', alt: 'Actividad academica en la Universidad Tecnologica de Tecamac' },
+			{ src: '/images/uttec-two.jpeg', alt: 'Actividad academica en la Universidad Tecnologica de Tecamac' },
+		],
 	},
 ];
 
@@ -261,8 +271,8 @@ export const certifications = [
 		category: 'Crecimiento profesional',
 		description:
 			'Curso enfocado en mentalidad de crecimiento, adaptabilidad y desarrollo profesional.',
-		credentialUrl: '/certifications/Transforma-tu-mentalidad.pdf',
-		downloadUrl: '/certifications/Transforma-tu-mentalidad.pdf',
+		credentialUrl: '/certifications/Transforma-tu-mentalidad.pdf.pdf',
+		downloadUrl: '/certifications/Transforma-tu-mentalidad.pdf.pdf',
 	},
 	{
 		title: 'Scrum Fundamentals Certified',
@@ -271,8 +281,8 @@ export const certifications = [
 		category: 'Agile',
 		description:
 			'Certificacion en fundamentos de Scrum, roles, eventos y trabajo iterativo.',
-		credentialUrl: '/certifications/ScrumFundamentalsCertified-LuisEduadoGutiérrezArias-1139117',
-		downloadUrl: '/certifications/ScrumFundamentalsCertified-LuisEduadoGutiérrezArias-1139117',
+		credentialUrl: '/certifications/ScrumFundamentalsCertified-LuisEduadoGutiérrezArias-1139117.pdf',
+		downloadUrl: '/certifications/ScrumFundamentalsCertified-LuisEduadoGutiérrezArias-1139117.pdf',
 	},
 	{
 		title: 'Project Management Fundamentals',
@@ -291,8 +301,8 @@ export const certifications = [
 		category: 'Agile',
 		description:
 			'Bases de gestion de proyectos y metodologias agiles aplicadas a entornos colaborativos.',
-		credentialUrl: '/certifications/Gestión-de-Proyectos-y-metodología-agile.pdf',
-		downloadUrl: '/certifications/Gestión-de-Proyectos-y-metodología-agile.pdf',
+		credentialUrl: '',
+		downloadUrl: '',
 	},
 	{
 		title: 'Linux Essentials Professional Development',
@@ -380,7 +390,7 @@ export const translations = {
 		'about.detail':
 			'I build web applications for real operations: administrative modules, registration flows, reports, API integrations and optimized SQL queries. I enjoy working through iterative delivery, documenting important decisions and keeping interfaces simple so people can complete tasks with less friction.',
 		'about.stat.0': 'professional experiences',
-		'about.stat.1': 'developed modules',
+		'about.stat.1': 'developed projects',
 		'about.stat.2': 'certifications',
 		'about.focus.0': 'Modular business systems',
 		'about.focus.1': 'REST APIs and integrations',
@@ -395,21 +405,21 @@ export const translations = {
 		'about.story.0.title': 'Invitation to Talent Land Mexico',
 		'about.story.0.category': 'Technology event',
 		'about.story.0.description':
-			'I was invited with members of my work team to Talent Land Mexico, a space where I discovered new ideas around technology, professional opportunities and industry-focused learning.',
+			'An experience with my team to discover technology, opportunities and new ideas applied to the industry.',
 		'about.story.0.lesson':
-			'It reinforced my growth mindset: learning from others, observing trends and connecting technology with real problems.',
+			'Learning from others and connecting trends with real problems.',
 		'about.story.1.title': 'Video game creation',
 		'about.story.1.category': 'Institutional project',
 		'about.story.1.description':
-			'I participated with a colleague in the development of a video game that we presented at an institutional level, combining creativity, logic, collaboration and hands-on learning.',
+			'I developed a video game with a colleague for an institutional presentation, combining creativity, logic and collaboration.',
 		'about.story.1.lesson':
-			'It helped me better understand the full product cycle: idea, build, adjustments, presentation and feedback.',
+			'Understanding the complete cycle: idea, build, adjustments and presentation.',
 		'about.story.2.title': 'Programming contest',
 		'about.story.2.category': 'Academic achievement',
 		'about.story.2.description':
-			'I was selected to participate in an institutional programming contest, reached the podium and confirmed that constant practice turns into results.',
+			'I reached the podium in an institutional programming contest through consistent practice and focused work under pressure.',
 		'about.story.2.lesson':
-			'It gave me technical learning, discipline under pressure and confidence that focused effort bears fruit.',
+			'Discipline, confidence and better technical decisions under pressure.',
 		'skills.title': 'Skills',
 		'skills.subtitle': 'Technical focus',
 		'skills.group.0.title': 'Frontend',
@@ -420,6 +430,11 @@ export const translations = {
 		'skills.group.2.subtitle': 'Modeling, queries and operational automation',
 		'skills.group.3.title': 'Tools',
 		'skills.group.3.subtitle': 'Collaborative work and continuous improvement',
+		'skills.level.junior': 'Junior',
+		'skills.level.juniorAdvanced': 'Advanced Junior',
+		'skills.level.nearMiddle': 'Approaching Middle',
+		'skills.level.middle': 'Middle',
+		'skills.level.middleAdvanced': 'Advanced Middle',
 		'skills.item.APIs RESTful': 'RESTful APIs',
 		'skills.item.Microservicios': 'Microservices',
 		'skills.item.Autenticacion segura': 'Secure authentication',
@@ -436,31 +451,34 @@ export const translations = {
 		'projects.intro':
 			'Projects where I have worked on business systems, responsive interfaces, API integration, databases and process automation.',
 		'projects.preview': 'Preview pending',
-		'projects.0.type': 'Business platform',
+		'projects.visual.overview': 'Project overview',
+		'projects.visual.technology': 'Technology',
+		'projects.visual.impact': 'Impact',
+		'projects.0.type': 'Community platform',
 		'projects.0.description':
-			'Personnel management and internal operations platform with multiple administrative modules.',
+			'A digital platform connecting and strengthening a community of women entrepreneurs through directories, business profiles, products, services, benefits and activities.',
 		'projects.0.impact':
-			'I contributed to responsive interfaces, navigation, content hierarchy and API integration for dynamic data handling.',
-		'projects.1.type': 'Administrative system',
+			'We centralized the community, increased business visibility and enabled content, user, permission and account recovery management.',
+		'projects.1.type': 'HR platform',
 		'projects.1.description':
-			'Internal system for attendance, records, permissions, assets and operational user control.',
+			'Internal attendance and Human Resources platform with facial recognition, schedules, incidents, leave, vacations and approval workflows.',
 		'projects.1.impact':
-			'I developed and maintained key modules, optimized MySQL queries for reports and improved business logic.',
-		'projects.2.type': 'Academic web application',
+			'We automated manual controls, work-hour reports, notifications and employee, training and asset management with enterprise integrations.',
+		'projects.2.type': 'Corporate website',
 		'projects.2.description':
-			'Mexican gastronomy application with chatbot, personalized recipes and intelligent search.',
+			'Corporate website for a consulting firm specializing in technology, software development, enterprise solutions and IT talent acquisition.',
 		'projects.2.impact':
-			'Responsive interface development, internal API integration and conversational experience for recipe guidance.',
-		'projects.3.type': 'Data analysis',
+			'We created a professional digital presence, clear service presentation, responsive design, SEO optimization and automated email contact requests.',
+		'projects.3.type': 'Management and point of sale',
 		'projects.3.description':
-			'Predictive incident model for the State of Mexico with data cleaning, analysis and visualization.',
+			'Comprehensive system for a butcher shop chain centralizing sales, inventory, customers, credit, purchasing, production and cash control.',
 		'projects.3.impact':
-			'I analyzed patterns by area, hour, day and gender, connecting a data pipeline with executive reports.',
-		'projects.4.type': 'Commercial website',
+			'We delivered a modular solution that improves traceability, reduces manual processes and simplifies multi-branch administration.',
+		'projects.4.type': 'Restaurant management',
 		'projects.4.description':
-			'Responsive visual layout to improve the digital presence of a local business.',
+			'System for point of sale, tables, reservations, kitchen orders, menu, payments, split bills, cancellations and permissions.',
 		'projects.4.impact':
-			'I developed an attractive, functional frontend experience optimized for performance and accessibility.',
+			'We connected waitstaff, kitchen and checkout operations to speed up service and provide greater control over every order and ticket.',
 		'experience.title': 'Experience',
 		'experience.subtitle': 'Professional path',
 		'experience.intro':
@@ -470,25 +488,25 @@ export const translations = {
 		'experience.0.period': 'January 2026 - Present',
 		'experience.0.location': 'Mexico',
 		'experience.0.description':
-			'Development and maintenance of business web platforms for personnel management, internal operations and administrative process improvement.',
+			'Development and improvement of business web platforms, contributing to key modules for communities, personnel management and internal operations.',
 		'experience.0.highlight.0':
-			'Development of modules for attendance, permissions, records, assets, activities, companies and products.',
+			'Development and maintenance of administration and user modules.',
 		'experience.0.highlight.1':
-			'API integration, dynamic data handling and responsive interface improvements.',
+			'Data validation and sanitization, form improvements and responsive interfaces.',
 		'experience.0.highlight.2':
-			'Optimization of MySQL queries, operational reports and business logic adjustments.',
+			'Debugging, functional testing, technical documentation and continuous improvement.',
 		'experience.1.role': 'Full-Stack Developer',
 		'experience.1.type': 'Professional',
 		'experience.1.period': 'May 2024 - August 2024',
 		'experience.1.location': 'Mexico',
 		'experience.1.description':
-			'Development of a web system for medical management with appointments, patients, staff and multi-user access.',
+			'I led the development of a web system for medical appointment, patient and staff management using the XP methodology.',
 		'experience.1.highlight.0':
-			'Implementation of roles, administrative permissions and secure authentication.',
+			'Full-stack development of the medical system and its administrative workflows.',
 		'experience.1.highlight.1':
-			'Deployment and configuration of a local server for network access.',
+			'Implementation of roles, permissions and secure authentication.',
 		'experience.1.highlight.2':
-			'Work under XP methodology with iterative cycles and continuous delivery.',
+			'Deployment on a self-managed server for multi-user network access.',
 		'experience.2.role': 'Academic Project Developer',
 		'experience.2.type': 'Academic',
 		'experience.2.period': '2024 - 2026',
@@ -496,9 +514,9 @@ export const translations = {
 		'experience.2.description':
 			'Participation in web and data solutions focused on functional products, information analysis and user experience.',
 		'experience.2.highlight.0':
-			'Development of SaborBot with conversational interface, personalized recipes and API integration.',
+			'Collaborative development of a video game presented at an institutional level.',
 		'experience.2.highlight.1':
-			'Data analysis for Axolote with executive visualization and pattern detection.',
+			'Participation and podium placement in an institutional programming contest.',
 		'experience.2.highlight.2':
 			'Team collaboration, technical documentation and version control.',
 		'certifications.title': 'Certifications',
@@ -508,6 +526,8 @@ export const translations = {
 		'certifications.pending': 'Link pending',
 		'certifications.view': 'View certificate',
 		'certifications.download': 'Download',
+		'certifications.credentials': 'credentials',
+		'certifications.hint': 'Select a credential to view its details',
 		'certifications.0.date': 'April 2026',
 		'certifications.0.category': 'Artificial Intelligence',
 		'certifications.0.description':

@@ -35,7 +35,7 @@
   --body-color: hsl(var(--hue-color), 60%, 99%);
   --container-color: #fff;
   --border-color: hsl(var(--hue-color), 28%, 90%);
-  --accent-color: hsl(158, 58%, 42%);
+  --accent-color: var(--first-color);
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
 
@@ -136,6 +136,24 @@ textarea {
 img {
   max-width: 100%;
   height: auto;
+}
+
+main,
+section,
+.container,
+.grid {
+  min-width: 0;
+}
+
+p,
+li,
+a,
+span,
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: anywhere;
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
@@ -327,11 +345,29 @@ img {
 
 /* For large devices */
 @media screen and (min-width: 768px) {
+  .section {
+    padding: 4.5rem 0 5rem;
+  }
+}
+
+@media screen and (min-width: 1100px) {
   body {
     margin: var(--header-height) 0 0 0;
   }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    width: min(calc(100% - 2rem), var(--container-width));
+  }
+
   .section {
-    padding: 4.5rem 0 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .section__subtitle {
+    margin-bottom: 2rem;
   }
 }
 
