@@ -1,5 +1,13 @@
 ---
 import { skillGroups } from '../data/profile';
+
+const getSkillLevel = (score: number) => {
+  if (score >= 86) return { key: 'middleAdvanced', label: 'Middle avanzado' };
+  if (score >= 75) return { key: 'middle', label: 'Middle' };
+  if (score >= 67) return { key: 'nearMiddle', label: 'Cerca de Middle' };
+  if (score >= 62) return { key: 'juniorAdvanced', label: 'Junior avanzado' };
+  return { key: 'junior', label: 'Junior' };
+};
 ---
 
 <section class="skills section reveal" id="skills">
@@ -23,17 +31,24 @@ import { skillGroups } from '../data/profile';
 
           <div class="skills__list grid">
             {
-              group.skills.map((skill) => (
-                <div class="skills__data">
-                  <div class="skills__titles">
-                    <h3 class="skills__name" data-i18n={`skills.item.${skill.name}`}>{skill.name}</h3>
-                    <span class="skills__number">{skill.level}%</span>
+              group.skills.map((skill, skillIndex) => {
+                const level = getSkillLevel(skill.level);
+
+                return (
+                  <div class="skills__data">
+                    <div class="skills__titles">
+                      <h3 class="skills__name" data-i18n={`skills.item.${skill.name}`}>{skill.name}</h3>
+                      <span class="skills__number" data-i18n={`skills.level.${level.key}`}>{level.label}</span>
+                    </div>
+                    <div class="skills__bar" aria-hidden="true">
+                      <span
+                        class="skills__percentage"
+                        style={`width: ${skill.level}%; --skill-index: ${skillIndex}`}
+                      ></span>
+                    </div>
                   </div>
-                  <div class="skills__bar" aria-hidden="true">
-                    <span class="skills__percentage" style={`width: ${skill.level}%`}></span>
-                  </div>
-                </div>
-              ))
+                );
+              })
             }
           </div>
         </div>
@@ -112,8 +127,14 @@ import { skillGroups } from '../data/profile';
   }
 
   .skills__number {
-    color: var(--text-color-light);
-    font-size: var(--small-font-size);
+    flex: 0 0 auto;
+    padding: .22rem .55rem;
+    border: 1px solid rgba(85, 157, 226, .24);
+    border-radius: 999px;
+    background: rgba(85, 157, 226, .08);
+    color: var(--first-color-alt);
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
   }
 
   .skills__bar,
@@ -139,6 +160,7 @@ import { skillGroups } from '../data/profile';
 
   .js .skills.in-view .skills__content.skills__open .skills__percentage {
     transform: scaleX(1);
+    transition-delay: calc(var(--skill-index) * 70ms);
   }
 
   .skills__close .skills__list {
@@ -155,6 +177,12 @@ import { skillGroups } from '../data/profile';
     transform: rotate(-180deg);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .js .skills__percentage {
+      transition-delay: 0ms;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     .skills__container {
       grid-template-columns: repeat(2, 1fr);
@@ -169,6 +197,14 @@ import { skillGroups } from '../data/profile';
   @media screen and (min-width: 1024px) {
     .skills__container {
       max-width: 980px;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .skills__titles {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: .4rem;
     }
   }
 </style>
