@@ -1,0 +1,178 @@
+---
+import { experiences } from '../data/profile';
+---
+
+<section class="experience section reveal" id="experience">
+  <h2 class="section__title" data-i18n="experience.title">Experiencia</h2>
+  <span class="section__subtitle" data-i18n="experience.subtitle">Trayectoria profesional</span>
+
+  <div class="experience__container container">
+    <p class="experience__intro" data-i18n="experience.intro">
+      Experiencia construyendo sistemas web empresariales, modulos administrativos,
+      integraciones backend y soluciones orientadas a procesos reales.
+    </p>
+
+    <div class="experience__timeline">
+      {
+        experiences.map((item) => (
+          <article class="experience__item">
+            <div class="experience__marker" aria-hidden="true"></div>
+
+            <div class="experience__content">
+              <div class="experience__meta">
+                <span data-i18n={`experience.${experiences.indexOf(item)}.type`}>{item.type}</span>
+                <span data-i18n={`experience.${experiences.indexOf(item)}.period`}>{item.period}</span>
+              </div>
+
+              <div class="experience__header">
+                <h3 data-i18n={`experience.${experiences.indexOf(item)}.role`}>{item.role}</h3>
+                <p>{item.company} · <span data-i18n={`experience.${experiences.indexOf(item)}.location`}>{item.location}</span></p>
+              </div>
+
+              <p class="experience__description" data-i18n={`experience.${experiences.indexOf(item)}.description`}>{item.description}</p>
+
+              <ul class="experience__highlights">
+                {item.highlights.map((highlight) => <li data-i18n={`experience.${experiences.indexOf(item)}.highlight.${item.highlights.indexOf(highlight)}`}>{highlight}</li>)}
+              </ul>
+
+              <ul class="experience__stack" aria-label={`Tecnologias y procesos en ${item.company}`}>
+                {item.stack.map((tech) => <li>{tech}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience__container {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .experience__intro {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.75;
+  }
+
+  .experience__timeline {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .experience__timeline::before {
+    content: '';
+    position: absolute;
+    top: .75rem;
+    bottom: .75rem;
+    left: .45rem;
+    width: 1px;
+    background: var(--border-color);
+  }
+
+  .experience__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .experience__marker {
+    width: .9rem;
+    height: .9rem;
+    margin-top: .45rem;
+    border-radius: 50%;
+    background: var(--first-color);
+    box-shadow: 0 0 0 6px var(--first-color-lighter);
+    z-index: 1;
+  }
+
+  .experience__content {
+    display: grid;
+    gap: .85rem;
+    padding: 1.25rem 0 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .experience__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    color: var(--first-color);
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  .experience__header h3 {
+    font-size: var(--h2-font-size);
+    margin-bottom: .25rem;
+  }
+
+  .experience__header p {
+    color: var(--text-color-light);
+  }
+
+  .experience__description,
+  .experience__highlights {
+    line-height: 1.7;
+  }
+
+  .experience__highlights {
+    display: grid;
+    gap: .55rem;
+  }
+
+  .experience__highlights li {
+    position: relative;
+    padding-left: 1.15rem;
+  }
+
+  .experience__highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .72em;
+    width: .35rem;
+    height: .35rem;
+    border-radius: 50%;
+    background: var(--accent-color);
+  }
+
+  .experience__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .experience__stack li {
+    color: var(--title-color);
+    background-color: var(--input-color);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: .35rem .7rem;
+    font-size: var(--smaller-font-size);
+  }
+
+  @media screen and (min-width: 768px) {
+    .experience__timeline {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .experience__item {
+      grid-template-columns: 1rem minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .experience__content {
+      padding: 1.4rem 0 1.75rem;
+    }
+  }
+</style>
