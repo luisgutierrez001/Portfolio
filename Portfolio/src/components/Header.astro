@@ -1,44 +1,44 @@
-<!-- Site navigation header with anchors for the main sections. -->
+---
+import { profile } from '../data/profile';
+
+const navItems = [
+	{ href: '#home', label: 'Home', icon: 'uil-home' },
+	{ href: '#about', label: 'About', icon: 'uil-user' },
+	{ href: '#skills', label: 'Skills', icon: 'uil-book-alt' },
+	{ href: '#projects', label: 'Projects', icon: 'uil-suitcase-alt' },
+	{ href: '#experience', label: 'Experience', icon: 'uil-briefcase-alt' },
+	{ href: '#certifications', label: 'Certs', icon: 'uil-award' },
+	{ href: '#contact', label: 'Contact', icon: 'uil-envelope-add' },
+];
+---
+
 <div class="container">
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="#" class="nav__logo">Luis Eduardo Gutiérrez Arias</a>
+      <a href="#home" class="nav__logo">{profile.name}</a>
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list grid">
-          <li class="nav__item">
-            <a href="#home" class="nav__link"
-              ><i class="uil uil-home nav__icon"></i>Home</a>
-          </li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link"
-              ><i class="uil uil-user-md nav__icon"></i>About</a>
-          </li>
-          <li class="nav__item">
-            <a href="#skills" class="nav__link"
-              ><i class="uil uil-book-alt nav__icon"></i>Skills</a>
-          </li>
-          <li class="nav__item">
-            <a href="#projects" class="nav__link"
-              ><i class="uil uil-suitcase-alt nav__icon"></i>Projects</a>
-          </li>
-          <li class="nav__item">
-            <a href="#blog" class="nav__link"
-              ><i class="uil uil-images nav__icon"></i>Blog</a>
-          </li>
-          <li class="nav__item">
-            <a href="#contactme" class="nav__link"
-              ><i class="uil uil-envelope-add nav__icon"></i>Contactme</a>
-          </li>
+          {
+            navItems.map((item) => (
+              <li class="nav__item">
+                <a href={item.href} class="nav__link">
+                  <i class={`uil ${item.icon} nav__icon`}></i>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
-        <i class="uil uil-times-circle nav__close" id="nav-close"></i>
+        <button class="nav__close" id="nav-close" type="button" aria-label="Cerrar menu">
+          <i class="uil uil-times-circle"></i>
+        </button>
       </div>
 
       <div class="nav__btns">
-        <!-- Theme change button -->
-        <div class="nav__toggle" id="nav-toggle">
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Abrir menu">
           <i class="uil uil-apps"></i>
-        </div>
+        </button>
       </div>
     </nav>
   </header>
@@ -50,11 +50,12 @@
       bottom: 0;
       left: 0;
       z-index: var(--z-fixed);
-      background-color: var(--body-color);
+      background-color: rgba(253, 254, 255, .96);
+      backdrop-filter: blur(10px);
     }
 
     .nav {
-      max-width: 968px;
+      max-width: var(--container-width);
       height: var(--header-height);
       display: flex;
       justify-content: space-between;
@@ -67,17 +68,27 @@
       font-weight: var(--font-medium);
     }
 
-    .nav__logo:hover {
+    .nav__logo {
+      max-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav__logo:hover,
+    .nav__toggle:hover {
       color: var(--first-color);
+    }
+
+    .nav__toggle,
+    .nav__close {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
     }
 
     .nav__toggle {
       font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-    .nav__toggle:hover {
-      color: var(--first-color);
     }
 
     @media screen and (max-width: 767px) {
@@ -88,27 +99,31 @@
         width: 100%;
         background-color: var(--body-color);
         padding: 2rem 1.5rem 4rem;
-        box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
-        border-radius: 1.5rem 1.5rem 0;
-        transition: 0.3s;
+        box-shadow: 0 -1px 12px rgba(39, 62, 84, 0.12);
+        border-radius: 1.25rem 1.25rem 0 0;
+        transition: bottom 0.3s ease;
       }
     }
 
     .nav__list {
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.25rem;
     }
+
     .nav__link {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: .2rem;
       font-size: var(--small-font-size);
       color: var(--title-color);
       font-weight: var(--font-medium);
+      transition: color .25s ease, transform .25s ease;
     }
 
     .nav__link:hover {
       color: var(--first-color);
+      transform: translateY(-1px);
     }
 
     .nav__icon {
@@ -120,7 +135,6 @@
       right: 1.3rem;
       bottom: .5rem;
       font-size: 1.5rem;
-      cursor: pointer;
       color: var(--first-color);
     }
 
@@ -132,5 +146,31 @@
       bottom: 0;
     }
 
+    @media screen and (min-width: 768px) {
+      .header {
+        top: 0;
+        bottom: auto;
+        box-shadow: 0 1px 8px rgba(39, 62, 84, 0.08);
+      }
+
+      .nav__menu {
+        margin-left: auto;
+      }
+
+      .nav__list {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav__link {
+        flex-direction: row;
+        gap: .35rem;
+      }
+
+      .nav__toggle,
+      .nav__close {
+        display: none;
+      }
+    }
   </style>
 </div>

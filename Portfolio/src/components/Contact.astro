@@ -1,0 +1,181 @@
+---
+import { contact, profile } from '../data/profile';
+
+const year = new Date().getFullYear();
+---
+
+<section class="contact section reveal" id="contact">
+  <div class="contact__container container">
+    <div class="contact__content">
+      <span class="section__subtitle contact__eyebrow">Contact</span>
+      <h2 class="section__title">{contact.title}</h2>
+      <p class="contact__description">{contact.description}</p>
+      <p class="contact__availability">{contact.availability}</p>
+
+      <div class="contact__actions">
+        <a href={`mailto:${profile.email}`} class="button button--flex">
+          Escribeme
+          <i class="uil uil-message button__icon"></i>
+        </a>
+        <a href={profile.cv} download class="button button--ghost button--flex">
+          Descargar CV
+          <i class="uil uil-download-alt button__icon"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact__links" aria-label="Enlaces de contacto">
+      {
+        contact.links.map((item) => (
+          <a
+            href={item.href}
+            target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+            rel={item.href.startsWith('mailto:') ? undefined : 'noreferrer'}
+            download={item.download ? true : undefined}
+            class="contact__link"
+          >
+            <i class={`uil ${item.icon}`}></i>
+            <span>
+              <strong>{item.label}</strong>
+              {item.value}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <footer class="contact__footer container">
+    <p>&copy; {year} {profile.name}. All rights reserved.</p>
+    <a href="#home">Back to top</a>
+  </footer>
+</section>
+
+<style>
+  .contact {
+    padding-bottom: 2rem;
+  }
+
+  .contact__container {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .contact__content {
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .contact__eyebrow {
+    margin-bottom: 0;
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+  }
+
+  .contact__description,
+  .contact__availability {
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  .contact__availability {
+    color: var(--text-color-light);
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+    margin-top: .25rem;
+  }
+
+  .contact__links {
+    display: grid;
+    gap: .85rem;
+  }
+
+  .contact__link {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: .9rem 0;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: color .25s ease, transform .25s ease, border-color .25s ease;
+  }
+
+  .contact__link:hover {
+    color: var(--first-color);
+    transform: translateX(3px);
+    border-color: var(--first-color-lighter);
+  }
+
+  .contact__link i {
+    color: var(--first-color);
+    font-size: 1.45rem;
+  }
+
+  .contact__link span {
+    display: grid;
+    gap: .15rem;
+    min-width: 0;
+  }
+
+  .contact__link strong {
+    color: var(--title-color);
+    font-size: var(--small-font-size);
+  }
+
+  .contact__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    color: var(--text-color-light);
+    font-size: var(--small-font-size);
+  }
+
+  .contact__footer a {
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+  }
+
+  .contact__footer a:hover {
+    color: var(--first-color-alt);
+  }
+
+  @media screen and (min-width: 768px) {
+    .contact__container {
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+      gap: clamp(2rem, 6vw, 4rem);
+      padding: 3rem 0;
+    }
+
+    .contact__content {
+      text-align: left;
+    }
+
+    .contact__content .section__title,
+    .contact__content .section__subtitle {
+      text-align: left;
+    }
+
+    .contact__description,
+    .contact__availability {
+      margin: 0;
+    }
+
+    .contact__actions {
+      justify-content: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,228 @@
+---
+import { projects } from '../data/profile';
+---
+
+<section class="projects section reveal" id="projects">
+  <h2 class="section__title">Projects</h2>
+  <span class="section__subtitle">Selected work</span>
+
+  <div class="projects__container container">
+    <div class="projects__intro">
+      <p>
+        Proyectos donde he trabajado en sistemas empresariales, interfaces responsivas,
+        integracion de APIs, bases de datos y automatizacion de procesos.
+      </p>
+    </div>
+
+    <div class="projects__grid">
+      {
+        projects.map((project, index) => (
+          <article class="project">
+            <a
+              class="project__media"
+              href={project.demoUrl || project.repoUrl || undefined}
+              target={project.demoUrl || project.repoUrl ? '_blank' : undefined}
+              rel={project.demoUrl || project.repoUrl ? 'noreferrer' : undefined}
+              aria-label={`Ver proyecto ${project.title}`}
+            >
+              {
+                project.image ? (
+                  <img src={project.image} alt={`Vista previa de ${project.title}`} />
+                ) : (
+                  <span>
+                    <strong>{String(index + 1).padStart(2, '0')}</strong>
+                    Preview pendiente
+                  </span>
+                )
+              }
+            </a>
+
+            <div class="project__body">
+              <div class="project__header">
+                <span class="project__type">{project.type}</span>
+                <h3>{project.title}</h3>
+              </div>
+
+              <p class="project__description">{project.description}</p>
+              <p class="project__impact">{project.impact}</p>
+
+              <ul class="project__stack" aria-label={`Tecnologias usadas en ${project.title}`}>
+                {project.stack.map((item) => <li>{item}</li>)}
+              </ul>
+
+              <div class="project__links">
+                {
+                  project.demoUrl && (
+                    <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                      Live
+                      <i class="uil uil-external-link-alt"></i>
+                    </a>
+                  )
+                }
+                {
+                  project.repoUrl && (
+                    <a href={project.repoUrl} target="_blank" rel="noreferrer">
+                      Code
+                      <i class="uil uil-github-alt"></i>
+                    </a>
+                  )
+                }
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects__container {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .projects__intro {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.75;
+  }
+
+  .projects__grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .project {
+    display: grid;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .project__media {
+    min-height: 210px;
+    border-radius: .75rem;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(85, 157, 226, .14), rgba(52, 175, 136, .10)),
+      var(--container-color);
+    border: 1px solid var(--border-color);
+    display: grid;
+    place-items: center;
+    color: var(--text-color-light);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+
+  .project__media:hover {
+    transform: translateY(-3px);
+    border-color: var(--first-color-lighter);
+    box-shadow: 0 18px 35px rgba(39, 62, 84, .08);
+  }
+
+  .project__media img {
+    width: 100%;
+    height: 100%;
+    min-height: 210px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project__media span {
+    display: grid;
+    gap: .35rem;
+    text-align: center;
+    font-size: var(--small-font-size);
+  }
+
+  .project__media strong {
+    color: var(--first-color);
+    font-size: var(--h2-font-size);
+  }
+
+  .project__body {
+    display: grid;
+    gap: .85rem;
+  }
+
+  .project__type {
+    color: var(--first-color);
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  .project__header h3 {
+    font-size: var(--h2-font-size);
+    margin-top: .2rem;
+  }
+
+  .project__description,
+  .project__impact {
+    line-height: 1.7;
+  }
+
+  .project__impact {
+    color: var(--text-color-light);
+  }
+
+  .project__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .project__stack li {
+    color: var(--title-color);
+    background-color: var(--input-color);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: .35rem .7rem;
+    font-size: var(--smaller-font-size);
+  }
+
+  .project__links {
+    display: flex;
+    gap: 1rem;
+    min-height: 1.5rem;
+  }
+
+  .project__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+    transition: color .25s ease, transform .25s ease;
+  }
+
+  .project__links a:hover {
+    color: var(--first-color-alt);
+    transform: translateX(2px);
+  }
+
+  @media screen and (min-width: 768px) {
+    .project {
+      grid-template-columns: minmax(260px, 42%) minmax(0, 1fr);
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .project:nth-child(even) .project__media {
+      order: 2;
+    }
+  }
+
+  @media screen and (min-width: 1080px) {
+    .projects__grid {
+      gap: 2rem;
+    }
+
+    .project__media,
+    .project__media img {
+      min-height: 260px;
+    }
+  }
+</style>

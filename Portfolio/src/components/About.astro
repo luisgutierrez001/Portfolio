@@ -1,64 +1,90 @@
-<section class="about section" id="about">
+---
+import { profile } from '../data/profile';
+---
+
+<section class="about section reveal" id="about">
   <h2 class="section__title">About Me</h2>
-  <span class="section__subtitle">My Introduction</span>
+  <span class="section__subtitle">Who I am</span>
 
   <div class="about__container container grid">
-    <img src="/images/about.jpeg" alt="" class="about__img" />
+    <figure class="about__photo">
+      <img src={profile.fullBodyPhoto} alt={`Foto personal de ${profile.name}`} class="about__img" />
+    </figure>
 
-    <div class="about__data">
-      <p class="about__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-        eaque.
-      </p>
-    </div>
+    <div class="about__content">
+      <p class="about__description">{profile.summary}</p>
+      <p class="about__description about__description--secondary">{profile.about}</p>
 
-    <div class="about__info">
-      <div>
-        <span class="about__info-title">01+</span>
-        <span class="about__info-name">Years <br /> experience</span>
+      <div class="about__info">
+        {
+          profile.stats.map((stat) => (
+            <div>
+              <span class="about__info-title">{stat.value}</span>
+              <span class="about__info-name">{stat.label}</span>
+            </div>
+          ))
+        }
       </div>
 
-      <div>
-        <span class="about__info-title">05+</span>
-        <span class="about__info-name">Completed <br /> projects</span>
-      </div>
+      <ul class="about__focus" aria-label="Areas de enfoque">
+        {
+          profile.focus.map((item) => (
+            <li>
+              <i class="uil uil-check-circle"></i>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
 
-      <div>
-        <span class="about__info-title">02+</span>
-        <span class="about__info-name">Companies <br /> worked</span>
+      <div class="about__buttons">
+        <a download href={profile.cv} target="_blank" class="button button--flex">
+          Download CV
+          <i class="uil uil-download-alt button__icon"></i>
+        </a>
       </div>
-    </div>
-
-    <div class="about__buttons">
-      <a
-        download="Luis-Eduardo-GA-cv.pdf"
-        href="/pdf/Luis-Eduardo-GA-cv.pdf"
-        target="_blank"
-        class="button button--flex"
-      >
-        Download CV
-        <i class="uil uil-download-alt button__icon"></i>
-      </a>
     </div>
   </div>
 
   <style>
-    .about__img {
-      width: 450px;
-      border-radius: 0.5rem;
+    .about__container {
+      animation: fadeUp .7s ease both;
+    }
+
+    .about__photo {
+      width: min(100%, 380px);
       justify-self: center;
-      align-self: center;
+      border-radius: .75rem;
+      overflow: hidden;
+      background: var(--container-color);
+      box-shadow: 0 18px 35px rgba(39, 62, 84, .10);
+    }
+
+    .about__img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
     .about__description {
       text-align: center;
-      margin-bottom: var(--mb-2-5);
+      line-height: 1.75;
+      margin-bottom: var(--mb-1);
+    }
+
+    .about__description--secondary {
+      color: var(--text-color-light);
+      margin-bottom: var(--mb-2);
     }
 
     .about__info {
       display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       justify-content: space-evenly;
-      margin-bottom: var(--mb-2-5);
+      margin-bottom: var(--mb-2);
     }
 
     .about__info-title {
@@ -69,6 +95,7 @@
 
     .about__info-name {
       font-size: var(--small-font-size);
+      max-width: 120px;
     }
 
     .about__info-title,
@@ -77,9 +104,59 @@
       text-align: center;
     }
 
+    .about__focus {
+      display: grid;
+      gap: .75rem;
+      margin-bottom: var(--mb-1);
+    }
+
+    .about__focus li {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--title-color);
+      font-size: var(--small-font-size);
+      justify-content: center;
+    }
+
+    .about__focus i {
+      color: var(--accent-color);
+      font-size: 1.1rem;
+    }
+
     .about__buttons {
       display: flex;
       justify-content: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      .about__container {
+        grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+        align-items: center;
+        column-gap: clamp(2.5rem, 7vw, 5rem);
+      }
+
+      .about__description {
+        text-align: left;
+      }
+
+      .about__info {
+        justify-content: space-between;
+      }
+
+      .about__focus li {
+        justify-content: flex-start;
+      }
+
+      .about__buttons {
+        justify-content: flex-start;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .about__content {
+        max-width: 680px;
+      }
     }
   </style>
 </section>

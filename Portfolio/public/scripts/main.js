@@ -1,52 +1,76 @@
-const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close');
+const navMenu = document.getElementById('nav-menu');
+const navToggle = document.getElementById('nav-toggle');
+const navClose = document.getElementById('nav-close');
+
+document.documentElement.classList.add('js');
 
 
-if (navToggle) {
+if (navMenu && navToggle) {
     navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu')
-    })
+        navMenu.classList.add('show-menu');
+    });
 }
 
-if (navClose) {
+if (navMenu && navClose) {
     navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu')
-    })
+        navMenu.classList.remove('show-menu');
+    });
 }
 
 
 /*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
+const navLink = document.querySelectorAll('.nav__link');
 
 function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu')
+    navMenu?.classList.remove('show-menu');
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
+navLink.forEach(n => n.addEventListener('click', linkAction));
 
 
 
 /*==================== ACORDING SKILLS ====================*/
 
-const skillsContent = document.getElementsByClassName('skills__content'),
-      skillsHeader = document.querySelectorAll('.skills__header')
+const skillsContent = document.getElementsByClassName('skills__content');
+const skillsHeader = document.querySelectorAll('.skills__header');
 
 
 function toggleSkills(){
-    let itemClass = this.parentNode.className
+    const content = this.parentNode;
+    const shouldOpen = content.classList.contains('skills__close');
 
     for (let i = 0; i < skillsContent.length; i++){
-        skillsContent[i].className = 'skills__content skills__close'
+        skillsContent[i].classList.remove('skills__open');
+        skillsContent[i].classList.add('skills__close');
+        skillsContent[i].querySelector('.skills__header')?.setAttribute('aria-expanded', 'false');
     }
 
-    if(itemClass === 'skills__content skills__close'){
-        this.parentNode.className = 'skills__content skills__open'
+    if (shouldOpen) {
+        content.classList.remove('skills__close');
+        content.classList.add('skills__open');
+        this.setAttribute('aria-expanded', 'true');
     }
 }
 
 
 skillsHeader.forEach((el) => {
-    el.addEventListener('click', toggleSkills)
-})
+    el.addEventListener('click', toggleSkills);
+});
+
+
+/*==================== REVEAL SECTIONS ====================*/
+const revealElements = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+    revealElements.forEach((element) => element.classList.add('in-view'));
+}

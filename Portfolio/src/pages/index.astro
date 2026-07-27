@@ -4,14 +4,17 @@ import Header from '../components/Header.astro';
 import Home from '../components/Home.astro';
 import About from '../components/About.astro';
 import Skills from '../components/Skills.astro';
-import Qualification from '../components/Qualification.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Certifications from '../components/Certifications.astro';
+import Contact from '../components/Contact.astro';
 import VercelAnalytics from '@vercel/analytics/astro';
 
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
@@ -20,7 +23,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Home />
 		<About />
 		<Skills />
-		<Qualification />
+		<Projects />
+		<Experience />
+		<Certifications />
+		<Contact />
 		<VercelAnalytics />
 	</body>
 </html>

@@ -1,9 +1,7 @@
-/*==================== GOOGLE FONTS ====================*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
 /*==================== VARIABLES CSS ====================*/
 :root {
   --header-height: 3rem;
+  --container-width: 1120px;
 
   /*========== Colors ==========*/
   --hue-color: 210;
@@ -36,11 +34,13 @@
   --input-color: hsl(var(--hue-color), 70%, 96%);
   --body-color: hsl(var(--hue-color), 60%, 99%);
   --container-color: #fff;
+  --border-color: hsl(var(--hue-color), 28%, 90%);
+  --accent-color: hsl(158, 58%, 42%);
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
 
   /*========== Font and typography ==========*/
-  --body-font: 'Poppins', sans-serif;
+  --body-font: var(--font-atkinson), sans-serif;
 
   /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
   --big-font-size: 2rem;
@@ -108,6 +108,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  overflow-x: hidden;
 }
 
 h1,
@@ -126,6 +127,12 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -134,9 +141,10 @@ img {
 /*==================== REUSABLE CSS CLASSES ====================*/
 
 .container {
-  max-width: 768px;
-  margin-left: var(--mb-1-5);
-  margin-right: var(--mb-1-5);
+  width: min(calc(100% - 3rem), var(--container-width));
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .grid {
@@ -145,7 +153,8 @@ img {
 }
 
 .section {
-  padding: 2rem 0 4rem;
+  padding: 3.5rem 0 4.5rem;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
 .section__title {
@@ -156,7 +165,7 @@ img {
 .section__subtitle {
   display: block;
   font-size: var(--small-font-size);
-  margin-bottom: var(--mb-3);
+  margin-bottom: var(--mb-2-5);
 }
 
 .section__title,
@@ -192,10 +201,13 @@ img {
   padding: 1em;
   border-radius: .5rem;
   font-weight: var(--font-medium);
+  transition: background-color .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 
 .button:hover {
   background-color: var(--first-color-alt);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(40, 104, 170, .18);
 }
 
 .button__icon {
@@ -207,6 +219,63 @@ img {
 .button--flex {
   display: inline-flex;
   align-items: center;
+}
+
+.button--ghost {
+  background-color: transparent;
+  border: 1px solid var(--first-color);
+  color: var(--first-color);
+}
+
+.button--ghost:hover {
+  background-color: var(--first-color-lighter);
+  color: var(--first-color-alt);
+  box-shadow: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes quietFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.js .reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
 }
 
 
@@ -257,3 +326,17 @@ img {
 
 
 /* For large devices */
+@media screen and (min-width: 768px) {
+  body {
+    margin: var(--header-height) 0 0 0;
+  }
+  .section {
+    padding: 4.5rem 0 5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    --big-font-size: 3.35rem;
+  }
+}
