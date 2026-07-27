@@ -1,18 +1,20 @@
 ---
-import { profile } from '../data/profile';
+import { profile, translations } from '../data/profile';
 
 const navItems = [
-	{ href: '#home', label: 'Home', icon: 'uil-home' },
-	{ href: '#about', label: 'About', icon: 'uil-user' },
-	{ href: '#skills', label: 'Skills', icon: 'uil-book-alt' },
-	{ href: '#projects', label: 'Projects', icon: 'uil-suitcase-alt' },
-	{ href: '#experience', label: 'Experience', icon: 'uil-briefcase-alt' },
-	{ href: '#certifications', label: 'Certs', icon: 'uil-award' },
-	{ href: '#contact', label: 'Contact', icon: 'uil-envelope-add' },
+	{ href: '#home', label: 'Inicio', icon: 'uil-home', key: 'nav.home' },
+	{ href: '#about', label: 'Sobre mi', icon: 'uil-user', key: 'nav.about' },
+	{ href: '#skills', label: 'Habilidades', icon: 'uil-book-alt', key: 'nav.skills' },
+	{ href: '#projects', label: 'Proyectos', icon: 'uil-suitcase-alt', key: 'nav.projects' },
+	{ href: '#experience', label: 'Experiencia', icon: 'uil-briefcase-alt', key: 'nav.experience' },
+	{ href: '#certifications', label: 'Certs', icon: 'uil-award', key: 'nav.certifications' },
+	{ href: '#contact', label: 'Contacto', icon: 'uil-envelope-add', key: 'nav.contact' },
 ];
 ---
 
-<div class="container">
+<script id="i18n-messages" type="application/json" set:html={JSON.stringify(translations)}></script>
+
+<div>
   <header class="header" id="header">
     <nav class="nav container">
       <a href="#home" class="nav__logo">{profile.name}</a>
@@ -24,7 +26,7 @@ const navItems = [
               <li class="nav__item">
                 <a href={item.href} class="nav__link">
                   <i class={`uil ${item.icon} nav__icon`}></i>
-                  {item.label}
+                  <span data-i18n={item.key}>{item.label}</span>
                 </a>
               </li>
             ))
@@ -36,6 +38,10 @@ const navItems = [
       </div>
 
       <div class="nav__btns">
+        <button class="nav__lang" id="language-toggle" type="button" aria-label="Cambiar idioma" aria-pressed="false">
+          <i class="uil uil-globe"></i>
+          <span data-i18n="language.label">ES</span>
+        </button>
         <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Abrir menu">
           <i class="uil uil-apps"></i>
         </button>
@@ -55,7 +61,8 @@ const navItems = [
     }
 
     .nav {
-      max-width: var(--container-width);
+      width: min(calc(100% - 4rem), 1320px);
+      max-width: 1320px;
       height: var(--header-height);
       display: flex;
       justify-content: space-between;
@@ -63,28 +70,75 @@ const navItems = [
     }
 
     .nav__logo,
-    .nav__toggle {
+    .nav__toggle,
+    .nav__lang {
       color: var(--title-color);
       font-weight: var(--font-medium);
     }
 
     .nav__logo {
-      max-width: 220px;
+      max-width: 280px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     .nav__logo:hover,
-    .nav__toggle:hover {
+    .nav__toggle:hover,
+    .nav__lang:hover {
       color: var(--first-color);
     }
 
     .nav__toggle,
-    .nav__close {
+    .nav__close,
+    .nav__lang {
       border: 0;
       background: transparent;
       cursor: pointer;
+    }
+
+    .nav__btns {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .nav__lang {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      min-width: 4.25rem;
+      height: 2rem;
+      padding: 0 .75rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background-color: var(--input-color);
+      box-shadow: inset 0 0 0 1px var(--border-color);
+      font-size: var(--smaller-font-size);
+      line-height: 1;
+      transition: background-color .25s ease, box-shadow .25s ease, color .25s ease, transform .25s ease;
+    }
+
+    .nav__lang i {
+      font-size: 1rem;
+    }
+
+    .nav__lang:hover {
+      background-color: #fff;
+      box-shadow: inset 0 0 0 1px var(--first-color-lighter), 0 8px 18px rgba(39, 62, 84, .08);
+      transform: translateY(-1px);
+    }
+
+    .nav__lang[aria-pressed="true"] {
+      background-color: var(--first-color);
+      box-shadow: inset 0 0 0 1px var(--first-color);
+      color: #fff;
+    }
+
+    .nav__lang[aria-pressed="true"]:hover {
+      background-color: var(--first-color-alt);
+      color: #fff;
     }
 
     .nav__toggle {
@@ -155,11 +209,12 @@ const navItems = [
 
       .nav__menu {
         margin-left: auto;
+        margin-right: 1rem;
       }
 
       .nav__list {
         display: flex;
-        gap: 1rem;
+        gap: clamp(.9rem, 1.6vw, 1.8rem);
       }
 
       .nav__link {

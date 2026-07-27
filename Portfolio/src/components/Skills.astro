@@ -3,8 +3,8 @@ import { skillGroups } from '../data/profile';
 ---
 
 <section class="skills section reveal" id="skills">
-  <h2 class="section__title">Skills</h2>
-  <span class="section__subtitle">Technical focus</span>
+  <h2 class="section__title" data-i18n="skills.title">Habilidades</h2>
+  <span class="section__subtitle" data-i18n="skills.subtitle">Enfoque tecnico</span>
 
   <div class="skills__container container grid">
     {
@@ -14,8 +14,8 @@ import { skillGroups } from '../data/profile';
             <i class={`uil ${group.icon} skills__icon`}></i>
 
             <span class="skills__heading">
-              <span class="skills__title">{group.title}</span>
-              <span class="skills__subtitle">{group.subtitle}</span>
+              <span class="skills__title" data-i18n={`skills.group.${skillGroups.indexOf(group)}.title`}>{group.title}</span>
+              <span class="skills__subtitle" data-i18n={`skills.group.${skillGroups.indexOf(group)}.subtitle`}>{group.subtitle}</span>
             </span>
 
             <i class="uil uil-angle-down skills__arrow"></i>
@@ -26,7 +26,7 @@ import { skillGroups } from '../data/profile';
               group.skills.map((skill) => (
                 <div class="skills__data">
                   <div class="skills__titles">
-                    <h3 class="skills__name">{skill.name}</h3>
+                    <h3 class="skills__name" data-i18n={`skills.item.${skill.name}`}>{skill.name}</h3>
                     <span class="skills__number">{skill.level}%</span>
                   </div>
                   <div class="skills__bar" aria-hidden="true">

@@ -3,12 +3,12 @@ import { projects } from '../data/profile';
 ---
 
 <section class="projects section reveal" id="projects">
-  <h2 class="section__title">Projects</h2>
-  <span class="section__subtitle">Selected work</span>
+  <h2 class="section__title" data-i18n="projects.title">Proyectos</h2>
+  <span class="section__subtitle" data-i18n="projects.subtitle">Trabajo seleccionado</span>
 
   <div class="projects__container container">
     <div class="projects__intro">
-      <p>
+      <p data-i18n="projects.intro">
         Proyectos donde he trabajado en sistemas empresariales, interfaces responsivas,
         integracion de APIs, bases de datos y automatizacion de procesos.
       </p>
@@ -31,7 +31,7 @@ import { projects } from '../data/profile';
                 ) : (
                   <span>
                     <strong>{String(index + 1).padStart(2, '0')}</strong>
-                    Preview pendiente
+                    <em data-i18n="projects.preview">Preview pendiente</em>
                   </span>
                 )
               }
@@ -39,12 +39,12 @@ import { projects } from '../data/profile';
 
             <div class="project__body">
               <div class="project__header">
-                <span class="project__type">{project.type}</span>
+                <span class="project__type" data-i18n={`projects.${index}.type`}>{project.type}</span>
                 <h3>{project.title}</h3>
               </div>
 
-              <p class="project__description">{project.description}</p>
-              <p class="project__impact">{project.impact}</p>
+              <p class="project__description" data-i18n={`projects.${index}.description`}>{project.description}</p>
+              <p class="project__impact" data-i18n={`projects.${index}.impact`}>{project.impact}</p>
 
               <ul class="project__stack" aria-label={`Tecnologias usadas en ${project.title}`}>
                 {project.stack.map((item) => <li>{item}</li>)}
@@ -134,6 +134,10 @@ import { projects } from '../data/profile';
     gap: .35rem;
     text-align: center;
     font-size: var(--small-font-size);
+  }
+
+  .project__media em {
+    font-style: normal;
   }
 
   .project__media strong {

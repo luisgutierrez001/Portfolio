@@ -3,11 +3,11 @@ import { experiences } from '../data/profile';
 ---
 
 <section class="experience section reveal" id="experience">
-  <h2 class="section__title">Experience</h2>
-  <span class="section__subtitle">Professional path</span>
+  <h2 class="section__title" data-i18n="experience.title">Experiencia</h2>
+  <span class="section__subtitle" data-i18n="experience.subtitle">Trayectoria profesional</span>
 
   <div class="experience__container container">
-    <p class="experience__intro">
+    <p class="experience__intro" data-i18n="experience.intro">
       Experiencia construyendo sistemas web empresariales, modulos administrativos,
       integraciones backend y soluciones orientadas a procesos reales.
     </p>
@@ -20,19 +20,19 @@ import { experiences } from '../data/profile';
 
             <div class="experience__content">
               <div class="experience__meta">
-                <span>{item.type}</span>
-                <span>{item.period}</span>
+                <span data-i18n={`experience.${experiences.indexOf(item)}.type`}>{item.type}</span>
+                <span data-i18n={`experience.${experiences.indexOf(item)}.period`}>{item.period}</span>
               </div>
 
               <div class="experience__header">
-                <h3>{item.role}</h3>
-                <p>{item.company} · {item.location}</p>
+                <h3 data-i18n={`experience.${experiences.indexOf(item)}.role`}>{item.role}</h3>
+                <p>{item.company} · <span data-i18n={`experience.${experiences.indexOf(item)}.location`}>{item.location}</span></p>
               </div>
 
-              <p class="experience__description">{item.description}</p>
+              <p class="experience__description" data-i18n={`experience.${experiences.indexOf(item)}.description`}>{item.description}</p>
 
               <ul class="experience__highlights">
-                {item.highlights.map((highlight) => <li>{highlight}</li>)}
+                {item.highlights.map((highlight) => <li data-i18n={`experience.${experiences.indexOf(item)}.highlight.${item.highlights.indexOf(highlight)}`}>{highlight}</li>)}
               </ul>
 
               <ul class="experience__stack" aria-label={`Tecnologias y procesos en ${item.company}`}>

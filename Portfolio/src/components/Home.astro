@@ -7,12 +7,17 @@ const [leftSide, rightSide] = profile.heroSides;
 <main class="main">
   <section class="home section reveal" id="home">
     <div class="home__container container">
-      <p class="home__intro">Hola, soy {profile.name}</p>
+      <div class="home__heading">
+        <p class="home__intro" data-i18n="home.intro">Hola, soy</p>
+        <h1 class="home__name">{profile.name}</h1>
+        <span class="home__role" data-i18n="home.role">{profile.role}</span>
+        <p class="home__description" data-i18n="home.tagline">{profile.tagline}</p>
+      </div>
 
       <div class="home__stage">
         <article class="home__side home__side--left">
-          <h1 class="home__side-title">{leftSide.title}</h1>
-          <p>{leftSide.description}</p>
+          <h1 class="home__side-title" data-i18n="home.left.title">{leftSide.title}</h1>
+          <p data-i18n="home.left.description">{leftSide.description}</p>
         </article>
 
         <figure class="home__portrait" aria-label={`Foto de ${profile.name}`}>
@@ -21,47 +26,15 @@ const [leftSide, rightSide] = profile.heroSides;
         </figure>
 
         <article class="home__side home__side--right">
-          <h2 class="home__side-title">{rightSide.title}</h2>
-          <p>{rightSide.description}</p>
+          <h2 class="home__side-title" data-i18n="home.right.title">{rightSide.title}</h2>
+          <p data-i18n="home.right.description">{rightSide.description}</p>
         </article>
       </div>
 
-      <div class="home__details">
-        <div>
-          <span class="home__role">{profile.role}</span>
-          <p class="home__description">{profile.tagline}</p>
-        </div>
-
-        <div class="home__actions">
-          <a href={profile.cv} download class="button button--flex">
-            Descargar CV
-            <i class="uil uil-download-alt button__icon"></i>
-          </a>
-          <a href={`mailto:${profile.email}`} class="button button--ghost button--flex">
-            Escribeme
-            <i class="uil uil-message button__icon"></i>
-          </a>
-        </div>
-      </div>
-
       <div class="home__footer">
-        <div class="home__social">
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" class="home__social-icon">
-            <i class="uil uil-linkedin-alt"></i>
-          </a>
-
-          <a href={`mailto:${profile.email}`} aria-label="Email" class="home__social-icon">
-            <i class="uil uil-envelope"></i>
-          </a>
-
-          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" class="home__social-icon">
-            <i class="uil uil-github-alt"></i>
-          </a>
-        </div>
-
         <a href="#about" class="home__scroll-button button--flex">
           <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-          <span class="home__scroll-name">Scroll down</span>
+          <span class="home__scroll-name" data-i18n="home.scroll">Desliza abajo</span>
           <i class="uil uil-arrow-down home__scroll-arrow"></i>
         </a>
       </div>
@@ -79,15 +52,28 @@ const [leftSide, rightSide] = profile.heroSides;
 
   .home__container {
     display: grid;
-    gap: 1.5rem;
+    gap: 1.65rem;
     animation: fadeUp .7s ease both;
+  }
+
+  .home__heading {
+    display: grid;
+    justify-items: center;
+    gap: .35rem;
+    text-align: center;
   }
 
   .home__intro {
     color: var(--first-color);
     font-size: var(--small-font-size);
     font-weight: var(--font-medium);
-    text-align: center;
+  }
+
+  .home__name {
+    max-width: 980px;
+    font-size: clamp(2.8rem, 8vw, 6.25rem);
+    line-height: .96;
+    letter-spacing: 0;
   }
 
   .home__stage {
@@ -116,7 +102,7 @@ const [leftSide, rightSide] = profile.heroSides;
 
   .home__portrait {
     position: relative;
-    width: min(72vw, 340px);
+    width: min(72vw, 360px);
     aspect-ratio: 1 / 1.08;
     justify-self: center;
     display: grid;
@@ -167,19 +153,11 @@ const [leftSide, rightSide] = profile.heroSides;
     filter: drop-shadow(0 18px 20px rgba(39, 62, 84, .16));
   }
 
-  .home__details {
-    display: grid;
-    gap: 1rem;
-    justify-items: center;
-    text-align: center;
-  }
-
   .home__role {
     display: block;
     color: var(--title-color);
     font-size: var(--h3-font-size);
     font-weight: var(--font-medium);
-    margin-bottom: var(--mb-0-5);
   }
 
   .home__description {
@@ -187,38 +165,13 @@ const [leftSide, rightSide] = profile.heroSides;
     line-height: 1.7;
   }
 
-  .home__actions,
-  .home__social,
   .home__footer {
     display: flex;
     align-items: center;
   }
 
-  .home__actions {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: .75rem;
-  }
-
   .home__footer {
     justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .home__social {
-    gap: 1rem;
-  }
-
-  .home__social-icon {
-    font-size: 1.25rem;
-    color: var(--first-color);
-    transition: color .25s ease, transform .25s ease;
-  }
-
-  .home__social-icon:hover {
-    color: var(--first-color-alt);
-    transform: translateY(-2px);
   }
 
   .home__scroll-button {
@@ -253,7 +206,7 @@ const [leftSide, rightSide] = profile.heroSides;
     }
 
     .home__stage {
-      grid-template-columns: minmax(190px, 1fr) minmax(300px, 380px) minmax(190px, 1fr);
+      grid-template-columns: minmax(190px, 1fr) minmax(310px, 400px) minmax(190px, 1fr);
       gap: clamp(1.5rem, 4vw, 4rem);
     }
 
@@ -275,25 +228,9 @@ const [leftSide, rightSide] = profile.heroSides;
       font-size: clamp(3rem, 5.5vw, 4.75rem);
     }
 
-    .home__details {
-      grid-template-columns: minmax(0, 1fr) max-content;
-      align-items: center;
-      text-align: left;
-      justify-items: stretch;
-      max-width: 920px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .home__actions {
-      justify-content: flex-end;
-    }
-
     .home__footer {
-      justify-content: space-between;
-      max-width: 920px;
-      width: 100%;
-      margin: 0 auto;
+      justify-content: center;
+      margin-top: .25rem;
     }
   }
 
@@ -303,7 +240,7 @@ const [leftSide, rightSide] = profile.heroSides;
     }
 
     .home__portrait {
-      width: min(32vw, 430px);
+      width: min(32vw, 440px);
     }
   }
 </style>

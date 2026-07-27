@@ -3,11 +3,11 @@ import { certifications } from '../data/profile';
 ---
 
 <section class="certifications section reveal" id="certifications">
-  <h2 class="section__title">Certifications</h2>
-  <span class="section__subtitle">Continuous learning</span>
+  <h2 class="section__title" data-i18n="certifications.title">Certificaciones</h2>
+  <span class="section__subtitle" data-i18n="certifications.subtitle">Aprendizaje continuo</span>
 
   <div class="certifications__container container">
-    <p class="certifications__intro">
+    <p class="certifications__intro" data-i18n="certifications.intro">
       Certificaciones y cursos que respaldan mi formacion tecnica, gestion de proyectos,
       metodologias agiles y crecimiento profesional.
     </p>
@@ -17,8 +17,8 @@ import { certifications } from '../data/profile';
         certifications.map((certificate) => (
           <article class="certificate">
             <div class="certificate__top">
-              <span class="certificate__category">{certificate.category}</span>
-              <span class="certificate__date">{certificate.date}</span>
+              <span class="certificate__category" data-i18n={`certifications.${certifications.indexOf(certificate)}.category`}>{certificate.category}</span>
+              <span class="certificate__date" data-i18n={`certifications.${certifications.indexOf(certificate)}.date`}>{certificate.date}</span>
             </div>
 
             <div>
@@ -26,13 +26,13 @@ import { certifications } from '../data/profile';
               <p class="certificate__issuer">{certificate.issuer}</p>
             </div>
 
-            <p class="certificate__description">{certificate.description}</p>
+            <p class="certificate__description" data-i18n={`certifications.${certifications.indexOf(certificate)}.description`}>{certificate.description}</p>
 
             <div class="certificate__links">
               {
                 certificate.credentialUrl && (
                   <a href={certificate.credentialUrl} target="_blank" rel="noreferrer">
-                    Ver certificado
+                    <span data-i18n="certifications.view">Ver certificado</span>
                     <i class="uil uil-external-link-alt"></i>
                   </a>
                 )
@@ -40,7 +40,7 @@ import { certifications } from '../data/profile';
               {
                 certificate.downloadUrl && (
                   <a href={certificate.downloadUrl} target="_blank" rel="noreferrer" download>
-                    Descargar
+                    <span data-i18n="certifications.download">Descargar</span>
                     <i class="uil uil-download-alt"></i>
                   </a>
                 )
@@ -48,7 +48,7 @@ import { certifications } from '../data/profile';
               {
                 !certificate.credentialUrl && !certificate.downloadUrl && (
                   <span>
-                    Link pendiente
+                    <span data-i18n="certifications.pending">Link pendiente</span>
                     <i class="uil uil-link-broken"></i>
                   </span>
                 )

@@ -7,18 +7,18 @@ const year = new Date().getFullYear();
 <section class="contact section reveal" id="contact">
   <div class="contact__container container">
     <div class="contact__content">
-      <span class="section__subtitle contact__eyebrow">Contact</span>
-      <h2 class="section__title">{contact.title}</h2>
-      <p class="contact__description">{contact.description}</p>
-      <p class="contact__availability">{contact.availability}</p>
+      <span class="section__subtitle contact__eyebrow" data-i18n="contact.eyebrow">Contacto</span>
+      <h2 class="section__title" data-i18n="contact.title">{contact.title}</h2>
+      <p class="contact__description" data-i18n="contact.description">{contact.description}</p>
+      <p class="contact__availability" data-i18n="contact.availability">{contact.availability}</p>
 
       <div class="contact__actions">
         <a href={`mailto:${profile.email}`} class="button button--flex">
-          Escribeme
+          <span data-i18n="contact.writeMe">Escribeme</span>
           <i class="uil uil-message button__icon"></i>
         </a>
         <a href={profile.cv} download class="button button--ghost button--flex">
-          Descargar CV
+          <span data-i18n="contact.downloadCv">Descargar CV</span>
           <i class="uil uil-download-alt button__icon"></i>
         </a>
       </div>
@@ -36,8 +36,8 @@ const year = new Date().getFullYear();
           >
             <i class={`uil ${item.icon}`}></i>
             <span>
-              <strong>{item.label}</strong>
-              {item.value}
+              <strong data-i18n={`contact.link.${item.label.toLowerCase()}`}>{item.label}</strong>
+              <span data-i18n={item.label === 'CV' ? 'contact.link.cvValue' : undefined}>{item.value}</span>
             </span>
           </a>
         ))
@@ -46,8 +46,8 @@ const year = new Date().getFullYear();
   </div>
 
   <footer class="contact__footer container">
-    <p>&copy; {year} {profile.name}. All rights reserved.</p>
-    <a href="#home">Back to top</a>
+    <p>&copy; {year} {profile.name}. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+    <a href="#home" data-i18n="footer.top">Volver arriba</a>
   </footer>
 </section>
 
