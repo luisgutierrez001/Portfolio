@@ -1,5 +1,5 @@
 export const profile = {
-	name: 'Luis Eduardo Gutierrez Arias',
+	name: 'Luis Eduardo Gutiérrez Arias',
 	role: 'Desarrollador de Software Full-Stack',
 	tagline:
 		'Transformo procesos complejos en plataformas web claras, escalables y mantenibles.',
@@ -42,34 +42,54 @@ export const profile = {
 
 export const aboutStories = [
 	{
-		title: 'Invitacion a Talent Land Mexico',
-		category: 'Evento tecnologico',
+		title: 'Invitación a Talent Land México',
+		category: 'Evento tecnológico',
 		description:
-			'Una experiencia con mi equipo para descubrir tecnologia, oportunidades y nuevas ideas aplicadas a la industria.',
+			'Una experiencia con mi equipo para descubrir tecnología, oportunidades y nuevas ideas aplicadas a la industria.',
 		lesson:
 			'Aprender de otros y conectar tendencias con problemas reales.',
 		image: 'images/1781679236045.jpeg',
 		icon: 'uil-rocket',
 	},
 	{
-		title: 'Creacion de videojuego',
+		title: 'Creación de videojuego',
 		category: 'Proyecto institucional',
 		description:
-			'Desarrolle junto a un colega un videojuego presentado a nivel institucional, combinando creatividad, logica y colaboracion.',
+			'Desarrollé junto a un colega un videojuego presentado a nivel institucional, combinando creatividad, lógica y colaboración.',
 		lesson:
-			'Comprender el ciclo completo: idea, construccion, ajustes y presentacion.',
+			'Comprender el ciclo completo: idea, construcción, ajustes y presentación.',
 		image: 'images/mapa.png',
 		icon: 'uil-game-structure',
 	},
 	{
-		title: 'Concurso de programacion',
-		category: 'Logro academico',
+		title: 'Concurso de programación',
+		category: 'Logro académico',
 		description:
-			'Alcance el podio en un concurso institucional de programacion gracias a la practica constante y el trabajo bajo presion.',
+			'Alcancé el podio en un concurso institucional de programación gracias a la práctica constante y el trabajo bajo presión.',
 		lesson:
-			'Disciplina, confianza y mejores decisiones tecnicas bajo presion.',
+			'Disciplina, confianza y mejores decisiones técnicas bajo presión.',
 		image: 'images/concurso.jpg',
 		icon: 'uil-award',
+	},
+	{
+		title: 'Bealos English Challenge',
+		category: 'Formación en inglés',
+		description:
+			'Participé durante un año en el programa Bealos English Challenge, fortaleciendo mi comunicación en inglés con práctica constante y seguimiento.',
+		lesson:
+			'Constancia, confianza para comunicarme y una base más sólida para crecer profesionalmente.',
+		image: 'images/bealos-english-challenge.jpeg',
+		icon: 'uil-english-to-chinese',
+	},
+	{
+		title: 'Una segunda familia en VLIM',
+		category: 'Equipo y comunidad',
+		description:
+			'En VLIM encontré amigos y compañeros con quienes compartir retos, aprendizajes y momentos que hicieron del trabajo una experiencia más humana.',
+		lesson:
+			'El buen equipo también impulsa: confianza, apoyo y ganas de construir mejor todos los días.',
+		image: 'images/vlim-one.jpeg',
+		icon: 'uil-users-alt',
 	},
 ];
 
@@ -134,64 +154,49 @@ export const skillGroups = [
 
 export const projects = [
 	{
-		title: 'Plataforma Victoria147',
+		title: 'Plataforma comunitaria digital',
 		type: 'Plataforma comunitaria',
 		description:
-			'Plataforma digital que conecta y fortalece una comunidad de mujeres emprendedoras mediante directorios, perfiles de negocio, productos, servicios, beneficios y actividades.',
+			'Plataforma web para gestionar una comunidad digital mediante perfiles, directorios, publicaciones, servicios, beneficios y actividades.',
 		impact:
-			'Centralizamos la comunidad, aumentamos la visibilidad de sus negocios y habilitamos la gestion de contenido, usuarios, permisos y recuperacion de cuentas.',
-		stack: ['Node.js', 'JavaScript', 'Moleculer', 'REST API', 'MySQL', 'MongoDB', 'Sequelize', 'NATS', 'JWT', 'Handlebars', 'Jest', 'PM2'],
-		images: ['/images/victoria-one.png', '/images/victoria-two.png', '/images/victoria-three.png'],
-		demoUrl: 'https://victoria147-dev.plataforma-empresarial.com/',
-		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_Plataforma_Victoria147',
+			'Contribuí al desarrollo de módulos de administración, usuarios, permisos, contenido y recuperación de cuentas para centralizar operaciones y mejorar la experiencia de uso.',
+		stack: ['Node.js', 'JavaScript', 'REST API', 'MySQL', 'MongoDB', 'JWT', 'Pruebas', 'Procesos async'],
 	},
 	{
-		title: 'Checador VLIM',
-		type: 'Plataforma de RH',
+		title: 'Sistema interno de recursos humanos',
+		type: 'Plataforma operativa',
 		description:
-			'Plataforma interna para asistencia y Recursos Humanos con reconocimiento facial, horarios, incidencias, permisos, vacaciones y flujos de aprobacion.',
+			'Plataforma interna para asistencia, horarios, incidencias, permisos, vacaciones, aprobaciones y seguimiento administrativo de personal.',
 		impact:
-			'Automatizamos controles manuales, reportes de horas, notificaciones y administracion de colaboradores, cursos y activos con integraciones empresariales.',
-		stack: ['Node.js', 'JavaScript', 'Moleculer', 'MySQL', 'Sequelize', 'AWS S3', 'Rekognition', 'JWT', 'REST API', 'NATS', 'ExcelJS', 'PDF-Lib'],
-		images: ['/images/checador-one.png', '/images/checador-two.png', '/images/checador-three.png', '/images/checador-four.png', '/images/checador-five.png'],
-		demoUrl: 'https://sapo.vlim.mx/',
-		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_ChecadorVLIM',
+			'Participé en la automatización de controles manuales, reportes, notificaciones, gestión de colaboradores y flujos de aprobación para mejorar la operación diaria.',
+		stack: ['Node.js', 'JavaScript', 'REST API', 'MySQL', 'JWT', 'Reportes', 'Validaciones', 'Integraciones'],
 	},
 	{
-		title: 'Beyserin Consulting',
-		type: 'Sitio web corporativo',
+		title: 'Sitio web corporativo',
+		type: 'Presencia digital',
 		description:
-			'Sitio corporativo para una consultora especializada en tecnologia, desarrollo de software, soluciones empresariales y captacion de talento TI.',
+			'Sitio corporativo responsivo para presentar servicios, propuesta de valor, perfiles de atención y formularios de contacto.',
 		impact:
-			'Creamos una presencia digital profesional, servicios claros, experiencia responsiva, optimizacion SEO y solicitudes de contacto automatizadas por correo.',
-		stack: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5', 'PHP', 'PHPMailer', 'SMTP', 'Apache'],
-		images: ['/images/beyserin-one.png', '/images/beyserin-two.png', '/images/beyserin-three.png'],
-		demoUrl: 'https://beyserinconsulting.com/',
-		repoUrl: 'https://github.com/GitVlimMaster/PAGWEB_Beyserin26',
+			'Apoyé en la construcción de una experiencia clara y profesional, con estructura responsiva, optimización básica y envío automatizado de solicitudes de contacto.',
+		stack: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'SMTP', 'Responsive UI'],
 	},
 	{
-		title: 'Grupo Landeros',
-		type: 'Gestion y punto de venta',
+		title: 'Sistema de gestión y punto de venta',
+		type: 'Operación comercial',
 		description:
-			'Sistema integral para una cadena de carnicerias que centraliza ventas, inventarios, clientes, creditos, compras, produccion y control de caja.',
+			'Sistema integral para centralizar ventas, inventarios, catálogos, clientes, créditos, compras, producción, sucursales, reembolsos y control de caja.',
 		impact:
-			'Aportamos una solucion modular que mejora la trazabilidad, reduce procesos manuales y facilita la administracion de distintas sucursales.',
-		stack: ['React', 'Vite', 'Material UI', 'Node.js', 'Moleculer', 'PostgreSQL', 'JWT', 'AWS S3', 'WebSockets', 'Impresion termica'],
-		images: ['/images/landeros-one.png', '/images/landeros-two.png', '/images/landeros-three.png'],
-		demoUrl: 'https://dev.landysystem.com.mx/login',
-		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_LandiSystem',
+			'Contribuí a una solución modular con reestructura de código, catálogos, cifrado, pruebas de backend y reembolsos centralizados para mejorar trazabilidad, reducir procesos manuales y facilitar la administración de operaciones.',
+		stack: ['React', 'Vite', 'Material UI', 'Node.js', 'PostgreSQL', 'JWT', 'Cifrado', 'Pruebas backend', 'Catálogos'],
 	},
 	{
-		title: 'El Cazuelon',
-		type: 'Gestion para restaurante',
+		title: 'Sistema operativo para restaurante',
+		type: 'Gestión de servicio',
 		description:
-			'Sistema para punto de venta, mesas, reservaciones, comandas de cocina, menu, cobro, division de cuentas, cancelaciones y permisos.',
+			'Sistema para punto de venta, mesas, reservaciones, comandas, menú, compras, recepción, control de calidad, cobro, división de cuentas, cancelaciones y permisos.',
 		impact:
-			'Conectamos meseros, cocina y caja para agilizar el servicio y brindar mayor control sobre cada pedido, comanda y ticket.',
-		stack: ['React', 'Vite', 'Material UI', 'Node.js', 'Moleculer', 'PostgreSQL', 'WebSockets', 'JWT', 'Impresion de tickets'],
-		images: ['/images/cazuelon-one.png', '/images/cazuelon-two.png', '/images/cazuelon-three.png'],
-		demoUrl: 'https://pos-dev.landysystem.com.mx/login',
-		repoUrl: 'https://github.com/GitVlimMaster/SISTWEB_LandiSystem',
+			'Participé en flujos que conectan atención, cocina y caja, además de reestructura de código, catálogos, cifrado, pruebas de backend, reembolsos centralizados, flujo de compra y sesiones directas de validación con clientes.',
+		stack: ['React', 'Vite', 'Material UI', 'Node.js', 'PostgreSQL', 'WebSockets', 'Cifrado', 'Pruebas backend', 'Compras'],
 	},
 ];
 
@@ -420,6 +425,18 @@ export const translations = {
 			'I reached the podium in an institutional programming contest through consistent practice and focused work under pressure.',
 		'about.story.2.lesson':
 			'Discipline, confidence and better technical decisions under pressure.',
+		'about.story.3.title': 'Bealos English Challenge',
+		'about.story.3.category': 'English training',
+		'about.story.3.description':
+			'I participated for one year in the Bealos English Challenge program, strengthening my English communication through consistent practice and guidance.',
+		'about.story.3.lesson':
+			'Consistency, confidence to communicate and a stronger foundation for professional growth.',
+		'about.story.4.title': 'A second family at VLIM',
+		'about.story.4.category': 'Team and community',
+		'about.story.4.description':
+			'At VLIM I found friends and teammates to share challenges, learning and moments that made work feel more human.',
+		'about.story.4.lesson':
+			'A good team also moves you forward: trust, support and the desire to build better every day.',
 		'skills.title': 'Skills',
 		'skills.subtitle': 'Technical focus',
 		'skills.group.0.title': 'Frontend',
@@ -452,33 +469,33 @@ export const translations = {
 			'Projects where I have worked on business systems, responsive interfaces, API integration, databases and process automation.',
 		'projects.preview': 'Preview pending',
 		'projects.visual.overview': 'Project overview',
-		'projects.visual.technology': 'Technology',
+		'projects.visual.technology': 'Modules',
 		'projects.visual.impact': 'Impact',
 		'projects.0.type': 'Community platform',
 		'projects.0.description':
-			'A digital platform connecting and strengthening a community of women entrepreneurs through directories, business profiles, products, services, benefits and activities.',
+			'A web platform for managing a digital community through profiles, directories, posts, services, benefits and activities.',
 		'projects.0.impact':
-			'We centralized the community, increased business visibility and enabled content, user, permission and account recovery management.',
-		'projects.1.type': 'HR platform',
+			'I contributed to admin, user, permission, content and account recovery modules to centralize operations and improve the user experience.',
+		'projects.1.type': 'Operations platform',
 		'projects.1.description':
-			'Internal attendance and Human Resources platform with facial recognition, schedules, incidents, leave, vacations and approval workflows.',
+			'Internal platform for attendance, schedules, incidents, leave, vacations, approvals and administrative personnel tracking.',
 		'projects.1.impact':
-			'We automated manual controls, work-hour reports, notifications and employee, training and asset management with enterprise integrations.',
-		'projects.2.type': 'Corporate website',
+			'I participated in automating manual controls, reports, notifications, staff management and approval workflows to improve day-to-day operations.',
+		'projects.2.type': 'Digital presence',
 		'projects.2.description':
-			'Corporate website for a consulting firm specializing in technology, software development, enterprise solutions and IT talent acquisition.',
+			'Responsive corporate website for presenting services, value proposition, support profiles and contact forms.',
 		'projects.2.impact':
-			'We created a professional digital presence, clear service presentation, responsive design, SEO optimization and automated email contact requests.',
-		'projects.3.type': 'Management and point of sale',
+			'I supported a clear and professional experience, with responsive structure, basic optimization and automated contact request delivery.',
+		'projects.3.type': 'Commercial operations',
 		'projects.3.description':
-			'Comprehensive system for a butcher shop chain centralizing sales, inventory, customers, credit, purchasing, production and cash control.',
+			'Comprehensive system to centralize sales, inventory, catalogs, customers, credit, purchasing, production, branches, refunds and cash control.',
 		'projects.3.impact':
-			'We delivered a modular solution that improves traceability, reduces manual processes and simplifies multi-branch administration.',
-		'projects.4.type': 'Restaurant management',
+			'I contributed to a modular solution with code restructuring, catalogs, encryption, backend tests and centralized refunds to improve traceability, reduce manual processes and simplify operations.',
+		'projects.4.type': 'Service management',
 		'projects.4.description':
-			'System for point of sale, tables, reservations, kitchen orders, menu, payments, split bills, cancellations and permissions.',
+			'System for point of sale, tables, reservations, orders, menu, purchasing, reception, quality control, payments, split bills, cancellations and permissions.',
 		'projects.4.impact':
-			'We connected waitstaff, kitchen and checkout operations to speed up service and provide greater control over every order and ticket.',
+			'I participated in flows that connect service, kitchen and checkout, plus code restructuring, catalogs, encryption, backend tests, centralized refunds, purchasing flow and direct client validation sessions.',
 		'experience.title': 'Experience',
 		'experience.subtitle': 'Professional path',
 		'experience.intro':
