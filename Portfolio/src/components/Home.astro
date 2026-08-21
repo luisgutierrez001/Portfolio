@@ -5,11 +5,13 @@ const [leftSide, rightSide] = profile.heroSides;
 ---
 
 <main class="main">
-  <section class="home section reveal" id="home">
+  <section class="home section reveal" id="home" data-hero>
     <div class="home__container container">
       <div class="home__heading">
         <p class="home__intro" data-i18n="home.intro">Hola, soy</p>
-        <h1 class="home__name">{profile.name}</h1>
+        <h1 class="home__name" aria-label={profile.name}>
+          <span class="home__name-text" data-hero-name-text>{profile.name}</span>
+        </h1>
         <span class="home__role" data-i18n="home.role">{profile.role}</span>
         <p class="home__description" data-i18n="home.tagline">{profile.tagline}</p>
       </div>
@@ -66,6 +68,7 @@ const [leftSide, rightSide] = profile.heroSides;
   }
 
   .home__heading {
+    position: relative;
     display: grid;
     justify-items: center;
     gap: .35rem;
@@ -79,10 +82,17 @@ const [leftSide, rightSide] = profile.heroSides;
   }
 
   .home__name {
+    position: relative;
+    z-index: 2;
     max-width: 980px;
     font-size: clamp(2.8rem, 8vw, 6.25rem);
     line-height: .96;
     letter-spacing: 0;
+  }
+
+  .home__name-text {
+    display: inline;
+    position: relative;
   }
 
   .home__stage {
@@ -95,9 +105,10 @@ const [leftSide, rightSide] = profile.heroSides;
   }
 
   .home__side {
-    z-index: 2;
+    z-index: 1;
     width: 100%;
     text-align: center;
+    will-change: opacity, transform, filter;
   }
 
   .home__side-title {
@@ -126,7 +137,7 @@ const [leftSide, rightSide] = profile.heroSides;
 
   .home__portrait {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     grid-column: 1;
     grid-row: 2;
     width: min(76vw, 320px);
@@ -134,6 +145,8 @@ const [leftSide, rightSide] = profile.heroSides;
     justify-self: center;
     display: grid;
     place-items: end center;
+    transform-origin: center bottom;
+    will-change: opacity, transform, filter;
   }
 
   .home__portrait-mask {
@@ -214,67 +227,119 @@ const [leftSide, rightSide] = profile.heroSides;
   .js .home__name,
   .js .home__role,
   .js .home__description,
-  .js .home__portrait-bg,
-  .js .home__code-layer,
-  .js .home__portrait-img,
+  .js .home__portrait,
   .js .home__side,
   .js .home__footer {
     opacity: 0;
   }
 
   .js .home.in-view .home__intro {
-    animation: heroFade .35s ease-out .05s both;
+    animation: introDrop .75s cubic-bezier(.16, 1, .3, 1) .04s both;
   }
 
   .js .home.in-view .home__name {
-    animation: nameFromTop .65s cubic-bezier(.22, 1, .36, 1) .12s both;
+    animation: nameStageIn .28s ease-out .5s both;
   }
 
-  .js .home.in-view .home__role,
-  .js .home.in-view .home__description {
-    animation: heroFade .5s ease-out both;
+  .js .home--typing .home__name-text::after {
+    content: "";
+    display: inline-block;
+    width: .07em;
+    height: .72em;
+    margin-left: .08em;
+    background: var(--first-color);
+    vertical-align: -.04em;
+    animation: caretBlink .75s steps(1, end) infinite;
   }
 
-  .js .home.in-view .home__role {
-    animation-delay: .48s;
+  .js .home--name-done .home__name-text::after {
+    animation: none;
+    opacity: 0;
   }
 
-  .js .home.in-view .home__description {
-    animation-delay: .58s;
+  .js .home.home--name-done .home__role {
+    animation: revealBehindName .58s cubic-bezier(.22, 1, .36, 1) both;
   }
 
-  .js .home.in-view .home__portrait-bg {
-    animation: shapeIn .55s cubic-bezier(.22, 1, .36, 1) .72s both;
+  .js .home.home--name-done .home__description {
+    animation: revealBehindName .58s cubic-bezier(.22, 1, .36, 1) .1s both;
   }
 
-  .js .home.in-view .home__portrait-img {
-    animation: portraitIn .6s cubic-bezier(.22, 1, .36, 1) .94s both;
+  .js .home.home--name-done .home__portrait {
+    animation: portraitImpact .58s cubic-bezier(.18, 1.25, .32, 1) .48s both;
   }
 
-  .js .home.in-view .home__code-layer {
-    animation: codeIn .55s ease-out 1.12s both;
+  .js .home.home--name-done .home__code-layer {
+    animation: codeIn .65s ease-out .66s both;
   }
 
-  .js .home.in-view .home__side--left {
-    animation: revealLeft .55s cubic-bezier(.22, 1, .36, 1) 1.18s both;
+  .js .home.home--name-done .home__side--left {
+    animation: revealFromImageLeft .7s cubic-bezier(.22, 1, .36, 1) .82s both;
   }
 
-  .js .home.in-view .home__side--right {
-    animation: revealRight .55s cubic-bezier(.22, 1, .36, 1) 1.18s both;
+  .js .home.home--name-done .home__side--right {
+    animation: revealFromImageRight .7s cubic-bezier(.22, 1, .36, 1) .82s both;
   }
 
-  .js .home.in-view .home__footer {
-    animation: heroFade .4s ease-out 1.42s both;
+  .js .home.home--name-done .home__footer {
+    animation: heroFade .44s ease-out 1.12s both;
   }
 
-  @keyframes nameFromTop {
+  @keyframes introDrop {
+    0% {
+      opacity: 0;
+      transform: translateY(-42px);
+      filter: blur(8px);
+    }
+    68% {
+      opacity: 1;
+      transform: translateY(4px);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes nameStageIn {
     from {
       opacity: 0;
-      transform: translateY(-28px);
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes revealBehindName {
+    from {
+      opacity: 0;
+      transform: translateY(-34px);
+      filter: blur(5px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes portraitImpact {
+    0% {
+      opacity: 0;
+      transform: translateY(22px) scale(.72);
+      filter: blur(8px);
+    }
+    55% {
+      opacity: 1;
+      transform: translateY(-3px) scale(1.04);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
     }
   }
 
@@ -289,58 +354,51 @@ const [leftSide, rightSide] = profile.heroSides;
     }
   }
 
-  @keyframes shapeIn {
-    from {
-      opacity: 0;
-      transform: scale(.78) rotate(-5deg);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) rotate(0);
-    }
-  }
-
-  @keyframes portraitIn {
-    from {
-      opacity: 0;
-      transform: translateY(26px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @keyframes codeIn {
     from {
       opacity: 0;
-      transform: scale(.94);
+      transform: scale(.94) translateY(8px);
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translateY(0);
     }
   }
 
-  @keyframes revealLeft {
+  @keyframes revealFromImageLeft {
     from {
       opacity: 0;
-      transform: translateX(52%);
+      transform: translateX(46%);
+      filter: blur(6px);
     }
     to {
       opacity: 1;
       transform: translateX(0);
+      filter: blur(0);
     }
   }
 
-  @keyframes revealRight {
+  @keyframes revealFromImageRight {
     from {
       opacity: 0;
-      transform: translateX(-52%);
+      transform: translateX(-46%);
+      filter: blur(6px);
     }
     to {
       opacity: 1;
       transform: translateX(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes caretBlink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
     }
   }
 
@@ -349,9 +407,7 @@ const [leftSide, rightSide] = profile.heroSides;
     .js .home__name,
     .js .home__role,
     .js .home__description,
-    .js .home__portrait-bg,
-    .js .home__code-layer,
-    .js .home__portrait-img,
+    .js .home__portrait,
     .js .home__side,
     .js .home__footer {
       opacity: 1;
@@ -368,6 +424,8 @@ const [leftSide, rightSide] = profile.heroSides;
   }
 
   .home__role {
+    position: relative;
+    z-index: 1;
     display: block;
     color: var(--title-color);
     font-size: var(--h3-font-size);
@@ -375,6 +433,8 @@ const [leftSide, rightSide] = profile.heroSides;
   }
 
   .home__description {
+    position: relative;
+    z-index: 1;
     max-width: 620px;
     line-height: 1.7;
   }

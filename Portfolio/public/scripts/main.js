@@ -4,6 +4,8 @@ const navClose = document.getElementById('nav-close');
 
 document.documentElement.classList.add('js');
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 
 /*==================== LANGUAGE SWITCH ====================*/
 const i18nSource = document.getElementById('i18n-messages');
@@ -43,6 +45,51 @@ document.addEventListener('click', (event) => {
     const nextLanguage = document.documentElement.lang === 'en' ? 'es' : 'en';
     applyLanguage(nextLanguage);
 });
+
+
+/*==================== HOME INTRO ====================*/
+const heroSection = document.querySelector('[data-hero]');
+const heroNameText = heroSection?.querySelector('[data-hero-name-text]');
+let heroIntroStarted = false;
+
+if (heroNameText && !prefersReducedMotion) {
+    heroNameText.dataset.heroName = heroNameText.textContent?.trim() || '';
+    heroNameText.textContent = '';
+}
+
+function completeHeroIntro() {
+    heroSection?.classList.remove('home--typing');
+    heroSection?.classList.add('home--name-done');
+}
+
+function runHeroIntro() {
+    if (!heroSection || heroIntroStarted) return;
+
+    heroIntroStarted = true;
+
+    if (!heroNameText || prefersReducedMotion) {
+        completeHeroIntro();
+        return;
+    }
+
+    const fullName = heroNameText.dataset.heroName || '';
+    const letters = Array.from(fullName);
+    let index = 0;
+
+    heroSection.classList.add('home--typing');
+
+    window.setTimeout(function typeNextLetter() {
+        heroNameText.textContent = letters.slice(0, index + 1).join('');
+        index += 1;
+
+        if (index < letters.length) {
+            window.setTimeout(typeNextLetter, 46);
+            return;
+        }
+
+        window.setTimeout(completeHeroIntro, 180);
+    }, 720);
+}
 
 
 if (navMenu && navToggle) {
@@ -147,8 +194,6 @@ document.querySelectorAll('[data-certifications-list]').forEach((list) => {
 });
 
 /*==================== ABOUT CAROUSEL ====================*/
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 document.querySelectorAll('[data-carousel-track]').forEach((track) => {
     const carouselId = track.getAttribute('data-carousel-track');
     const prevButton = document.querySelector(`[data-carousel-prev="${carouselId}"]`);
@@ -346,6 +391,9 @@ if ('IntersectionObserver' in window) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
+                if (entry.target === heroSection) {
+                    runHeroIntro();
+                }
                 revealObserver.unobserve(entry.target);
             }
         });
@@ -353,7 +401,12 @@ if ('IntersectionObserver' in window) {
 
     revealElements.forEach((element) => revealObserver.observe(element));
 } else {
-    revealElements.forEach((element) => element.classList.add('in-view'));
+    revealElements.forEach((element) => {
+        element.classList.add('in-view');
+        if (element === heroSection) {
+            runHeroIntro();
+        }
+    });
 }
 
 

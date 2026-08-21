@@ -1,18 +1,170 @@
 ---
 import { projects } from '../data/profile';
 
-const fallbackVisuals = [
-  { kind: 'overview', label: 'Vista general', key: 'projects.visual.overview', icon: 'uil-window' },
-  { kind: 'technology', label: 'Tecnologia', key: 'projects.visual.technology', icon: 'uil-brackets-curly' },
-  { kind: 'impact', label: 'Impacto', key: 'projects.visual.impact', icon: 'uil-chart-growth' },
+const projectVisuals = [
+  [
+    {
+      kind: 'admin',
+      label: 'Administracion',
+      icon: 'uil-setting',
+      title: 'Panel de administracion',
+      summary: 'Operacion centralizada de comunidad',
+      chips: ['Usuarios', 'Permisos', 'Contenido'],
+      metrics: ['Roles', 'Actividad', 'Solicitudes'],
+      rows: ['Revision de perfiles', 'Gestion de publicaciones', 'Recuperacion de cuenta'],
+    },
+    {
+      kind: 'users',
+      label: 'Usuarios y permisos',
+      icon: 'uil-users-alt',
+      title: 'Control de accesos',
+      summary: 'Roles, estados y seguimiento',
+      chips: ['Perfiles', 'Roles', 'Accesos'],
+      metrics: ['Altas', 'Permisos', 'Estados'],
+      rows: ['Alta de usuario', 'Asignacion de rol', 'Validacion de permisos'],
+    },
+    {
+      kind: 'content',
+      label: 'Contenido',
+      icon: 'uil-file-edit-alt',
+      title: 'Gestion de contenido',
+      summary: 'Directorio, publicaciones y solicitudes',
+      chips: ['Directorio', 'Publicaciones', 'Soporte'],
+      metrics: ['Entradas', 'Categorias', 'Recuperacion'],
+      rows: ['Contenido pendiente', 'Elemento publicado', 'Solicitud resuelta'],
+    },
+  ],
+  [
+    {
+      kind: 'attendance',
+      label: 'Controles',
+      icon: 'uil-clock',
+      title: 'Automatizacion operativa',
+      summary: 'Controles manuales convertidos en flujos',
+      chips: ['Asistencia', 'Incidencias', 'Alertas'],
+      metrics: ['Entradas', 'Validaciones', 'Estados'],
+      rows: ['Registro automatizado', 'Incidencia detectada', 'Notificacion enviada'],
+    },
+    {
+      kind: 'workflow',
+      label: 'Aprobaciones',
+      icon: 'uil-check-circle',
+      title: 'Flujos de aprobacion',
+      summary: 'Solicitudes, responsables y respuesta',
+      chips: ['Solicitud', 'Revision', 'Respuesta'],
+      metrics: ['Pendientes', 'Aprobadas', 'Rechazadas'],
+      rows: ['Permiso recibido', 'Responsable asignado', 'Respuesta registrada'],
+    },
+    {
+      kind: 'reports',
+      label: 'Reportes',
+      icon: 'uil-chart-line',
+      title: 'Gestion y reportes',
+      summary: 'Colaboradores, filtros y exportables',
+      chips: ['Colaboradores', 'Reportes', 'Exportables'],
+      metrics: ['Personal', 'Horas', 'Documentos'],
+      rows: ['Colaborador actualizado', 'Reporte filtrado', 'Archivo exportado'],
+    },
+  ],
+  [
+    {
+      kind: 'landing',
+      label: 'Servicios',
+      icon: 'uil-browser',
+      title: 'Experiencia profesional',
+      summary: 'Estructura clara y contenido ordenado',
+      chips: ['Home', 'Servicios', 'Confianza'],
+      metrics: ['Secciones', 'CTA', 'Claridad'],
+      rows: ['Bloque jerarquizado', 'Servicio presentado', 'Mensaje optimizado'],
+    },
+    {
+      kind: 'contact',
+      label: 'Contacto',
+      icon: 'uil-envelope-send',
+      title: 'Envio automatizado',
+      summary: 'Solicitudes validadas y enviadas',
+      chips: ['Formulario', 'Validacion', 'Correo'],
+      metrics: ['Campos', 'SMTP', 'Confirmacion'],
+      rows: ['Datos validados', 'Solicitud enviada', 'Confirmacion preparada'],
+    },
+    {
+      kind: 'responsive',
+      label: 'Responsive',
+      icon: 'uil-mobile-android',
+      title: 'Experiencia adaptable',
+      summary: 'Optimizacion basica y vistas responsivas',
+      chips: ['Desktop', 'Mobile', 'SEO'],
+      metrics: ['Layout', 'Carga', 'Accesos'],
+      rows: ['Vista ajustada', 'Menu responsive', 'Metadata optimizada'],
+    },
+  ],
+  [
+    {
+      kind: 'inventory',
+      label: 'Catalogos',
+      icon: 'uil-box',
+      title: 'Catalogos e inventario',
+      summary: 'Modulos reutilizables y datos ordenados',
+      chips: ['Catalogos', 'Inventario', 'Clientes'],
+      metrics: ['Stock', 'Reglas', 'Estados'],
+      rows: ['Catalogo actualizado', 'Existencia sincronizada', 'Dato validado'],
+    },
+    {
+      kind: 'cash',
+      label: 'Reembolsos',
+      icon: 'uil-transaction',
+      title: 'Reembolsos centralizados',
+      summary: 'Flujo unificado con trazabilidad',
+      chips: ['Caja', 'Reembolsos', 'Cifrado'],
+      metrics: ['Solicitudes', 'Estados', 'Auditoria'],
+      rows: ['Solicitud registrada', 'Movimiento cifrado', 'Respuesta centralizada'],
+    },
+    {
+      kind: 'production',
+      label: 'Backend',
+      icon: 'uil-process',
+      title: 'Codigo y pruebas backend',
+      summary: 'Reestructura, seguridad y validacion',
+      chips: ['Refactor', 'Pruebas', 'Seguridad'],
+      metrics: ['Servicios', 'Tests', 'Trazas'],
+      rows: ['Modulo reestructurado', 'Prueba backend creada', 'Regla de cifrado aplicada'],
+    },
+  ],
+  [
+    {
+      kind: 'tables',
+      label: 'Atencion',
+      icon: 'uil-restaurant',
+      title: 'Atencion y comandas',
+      summary: 'Conexion entre servicio, cocina y caja',
+      chips: ['Mesas', 'Comandas', 'Caja'],
+      metrics: ['Abiertas', 'Cocina', 'Cobro'],
+      rows: ['Mesa abierta', 'Comanda enviada', 'Pedido actualizado'],
+    },
+    {
+      kind: 'purchase',
+      label: 'Compras',
+      icon: 'uil-clipboard-notes',
+      title: 'Flujo de compra',
+      summary: 'Orden, recepcion y calidad',
+      chips: ['Orden', 'Recepcion', 'Calidad'],
+      metrics: ['Solicitudes', 'Recibidas', 'Revisadas'],
+      rows: ['Orden creada', 'Recepcion registrada', 'Calidad validada'],
+    },
+    {
+      kind: 'payments',
+      label: 'Operacion',
+      icon: 'uil-receipt',
+      title: 'Caja, clientes y backend',
+      summary: 'Cobro, reuniones y pruebas',
+      chips: ['Cobro', 'Clientes', 'Pruebas'],
+      metrics: ['Pagos', 'Acuerdos', 'Tests'],
+      rows: ['Ticket emitido', 'Retroalimentacion atendida', 'Prueba backend validada'],
+    },
+  ],
 ];
 
-const getProjectSlides = (project: (typeof projects)[number]) => {
-  const images = project.images
-    .map((src, index) => ({ src, alt: `${project.title}, imagen ${index + 1}` }));
-
-  return images.length > 0 ? images : fallbackVisuals;
-};
+const getProjectSlides = (index: number) => projectVisuals[index] ?? projectVisuals[0];
 ---
 
 <section class="projects section reveal" id="projects">
@@ -30,21 +182,18 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
     <div class="projects__grid">
       {
         projects.map((project, index) => {
-          const slides = getProjectSlides(project);
+          const slides = getProjectSlides(index);
 
           return (
           <article class="project">
-            <a
+            <figure
               class="project__media"
-              href={project.demoUrl || project.repoUrl || undefined}
-              target={project.demoUrl || project.repoUrl ? '_blank' : undefined}
-              rel={project.demoUrl || project.repoUrl ? 'noreferrer' : undefined}
-              aria-label={`Ver proyecto ${project.title}`}
+              aria-label={`Mockup anonimo de ${project.type}`}
             >
               <span
                 class="project__gallery"
                 data-project-gallery
-                data-project-interval={String(4300 + index * 280)}
+                data-project-interval={String(2400 + index * 120)}
                 aria-label={`Galeria visual de ${project.title}`}
               >
                 {
@@ -54,16 +203,48 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
                       data-project-slide
                       aria-hidden={slideIndex === 0 ? 'false' : 'true'}
                     >
-                      {'src' in slide ? (
-                        <img src={slide.src} alt={slide.alt} loading="lazy" />
-                      ) : (
-                        <span class={`project__visual project__visual--${slide.kind}`}>
-                          <i class={`uil ${slide.icon}`}></i>
-                          <em data-i18n={slide.key}>{slide.label}</em>
-                          <strong>{project.title}</strong>
-                          <small>{slide.kind === 'technology' ? project.stack.slice(0, 3).join(' · ') : project.type}</small>
+                      <span class={`project__visual project__visual--${slide.kind}`}>
+                        <span class={`project__mockup project__mockup--${slide.kind}`} aria-hidden="true">
+                          <span class="project__mockup-topbar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                          </span>
+                          <span class="project__mockup-sidebar">
+                            {slide.chips.map((chip) => <b>{chip}</b>)}
+                          </span>
+                          <span class="project__mockup-content">
+                            <span class="project__mockup-heading">
+                              <strong>{slide.title}</strong>
+                              <small>{slide.summary}</small>
+                            </span>
+                            <span class="project__mockup-metrics">
+                              {slide.metrics.map((metric) => <b>{metric}</b>)}
+                            </span>
+                            <span class="project__mockup-workspace">
+                              <span class="project__mockup-list">
+                                {slide.rows.map((row) => (
+                                  <b>
+                                    <i></i>
+                                    <small>{row}</small>
+                                  </b>
+                                ))}
+                              </span>
+                              <span class="project__mockup-flow">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                              </span>
+                            </span>
+                          </span>
                         </span>
-                      )}
+                        <span class="project__visual-caption">
+                          <i class={`uil ${slide.icon}`}></i>
+                          <em>{slide.label}</em>
+                          <strong>{slide.title}</strong>
+                          <small>{slide.summary}</small>
+                        </span>
+                      </span>
                     </span>
                   ))
                 }
@@ -74,7 +255,7 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
                   ))}
                 </span>
               </span>
-            </a>
+            </figure>
 
             <div class="project__body">
               <div class="project__header">
@@ -89,24 +270,6 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
                 {project.stack.map((item) => <li>{item}</li>)}
               </ul>
 
-              <div class="project__links">
-                {
-                  project.demoUrl && (
-                    <a href={project.demoUrl} target="_blank" rel="noreferrer">
-                      Live
-                      <i class="uil uil-external-link-alt"></i>
-                    </a>
-                  )
-                }
-                {
-                  project.repoUrl && (
-                    <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                      Code
-                      <i class="uil uil-github-alt"></i>
-                    </a>
-                  )
-                }
-              </div>
             </div>
           </article>
           );
@@ -184,59 +347,236 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
     transform: scale(1);
   }
 
-  .project__slide img {
-    width: 100%;
-    height: 100%;
-    min-height: 210px;
-    object-fit: cover;
-    display: block;
-  }
-
   .project__visual {
     position: relative;
     width: 100%;
     height: 100%;
+    --mockup-accent: var(--first-color);
+    --mockup-soft: rgba(85, 157, 226, .14);
+    --mockup-line: rgba(70, 96, 126, .14);
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     place-items: center;
     align-content: center;
-    gap: .4rem;
+    gap: .65rem;
     overflow: hidden;
-    padding: 2rem;
-    text-align: center;
+    padding: 1.15rem;
+    text-align: left;
     background:
-      radial-gradient(circle at 75% 20%, rgba(85, 157, 226, .22), transparent 28%),
-      linear-gradient(145deg, rgba(255, 255, 255, .95), rgba(85, 157, 226, .12));
+      linear-gradient(145deg, rgba(255, 255, 255, .98), var(--mockup-soft));
   }
 
-  .project__visual::before,
-  .project__visual::after {
-    content: '';
-    position: absolute;
-    border: 1px solid rgba(85, 157, 226, .16);
+  .project__mockup {
+    width: min(100%, 25rem);
+    aspect-ratio: 16 / 10;
+    display: grid;
+    grid-template-columns: minmax(5.2rem, 27%) 1fr;
+    grid-template-rows: 2rem 1fr;
+    overflow: hidden;
+    border: 1px solid var(--mockup-line);
+    border-radius: .75rem;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 18px 34px rgba(39, 62, 84, .12);
+  }
+
+  .project__mockup-topbar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    padding: 0 .8rem;
+    background: rgba(41, 56, 75, .07);
+  }
+
+  .project__mockup-topbar i {
+    width: .45rem;
+    height: .45rem;
     border-radius: 50%;
+    background: var(--mockup-accent);
+    opacity: .58;
   }
 
-  .project__visual::before {
-    width: 11rem;
-    height: 11rem;
-    top: -6rem;
-    right: -4rem;
+  .project__mockup-sidebar {
+    display: grid;
+    align-content: start;
+    gap: .45rem;
+    padding: .75rem .55rem;
+    background: var(--mockup-soft);
   }
 
-  .project__visual::after {
-    width: 7rem;
-    height: 7rem;
-    left: -3rem;
-    bottom: -4rem;
+  .project__mockup-sidebar b {
+    min-width: 0;
+    min-height: 1.35rem;
+    display: flex;
+    align-items: center;
+    padding: 0 .45rem;
+    border-radius: .35rem;
+    background: rgba(255, 255, 255, .58);
+    color: rgba(41, 56, 75, .74);
+    font-size: clamp(.5rem, 1.25vw, .62rem);
+    font-weight: var(--font-medium);
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .project__visual i {
-    color: var(--first-color);
-    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  .project__mockup-sidebar b:first-child {
+    background: var(--mockup-accent);
+    color: #fff;
   }
 
-  .project__visual em {
-    color: var(--first-color);
+  .project__mockup-content {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: .55rem;
+    min-width: 0;
+    padding: .72rem;
+  }
+
+  .project__mockup-heading {
+    display: grid;
+    gap: .16rem;
+    min-width: 0;
+  }
+
+  .project__mockup-heading strong {
+    color: var(--title-color);
+    font-size: clamp(.72rem, 1.6vw, .9rem);
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project__mockup-heading small {
+    color: var(--text-color-light);
+    font-size: clamp(.5rem, 1.25vw, .62rem);
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project__mockup-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .4rem;
+  }
+
+  .project__mockup-metrics b {
+    min-width: 0;
+    min-height: 2.05rem;
+    display: grid;
+    place-items: center;
+    padding: .25rem;
+    border: 1px solid var(--mockup-line);
+    border-radius: .45rem;
+    background: rgba(255, 255, 255, .76);
+    color: rgba(41, 56, 75, .78);
+    font-size: clamp(.48rem, 1.2vw, .6rem);
+    line-height: 1.1;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .project__mockup-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(3.1rem, .75fr);
+    gap: .5rem;
+    min-height: 0;
+  }
+
+  .project__mockup-list {
+    display: grid;
+    gap: .35rem;
+    align-content: start;
+    min-width: 0;
+  }
+
+  .project__mockup-list b {
+    min-width: 0;
+    min-height: 1.45rem;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .28rem .4rem;
+    border-radius: .4rem;
+    background: rgba(41, 56, 75, .055);
+  }
+
+  .project__mockup-list i {
+    width: .45rem;
+    height: .45rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--mockup-accent);
+  }
+
+  .project__mockup-list small {
+    min-width: 0;
+    color: rgba(41, 56, 75, .72);
+    font-size: clamp(.48rem, 1.18vw, .6rem);
+    line-height: 1.15;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project__mockup-flow {
+    position: relative;
+    display: grid;
+    align-content: space-around;
+    justify-items: center;
+    min-height: 100%;
+    padding: .35rem 0;
+    border-radius: .5rem;
+    background: rgba(255, 255, 255, .62);
+  }
+
+  .project__mockup-flow::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 50%;
+    width: 2px;
+    background: var(--mockup-line);
+    transform: translateX(-50%);
+  }
+
+  .project__mockup-flow i {
+    position: relative;
+    z-index: 1;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: .28rem solid #fff;
+    border-radius: 50%;
+    background: var(--mockup-accent);
+    box-shadow: 0 4px 10px rgba(39, 62, 84, .1);
+  }
+
+  .project__visual-caption {
+    display: grid;
+    width: min(100%, 25rem);
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .15rem .55rem;
+    padding: .55rem .7rem;
+    border: 1px solid rgba(70, 96, 126, .12);
+    border-radius: .65rem;
+    background: rgba(255, 255, 255, .72);
+    box-shadow: 0 10px 22px rgba(39, 62, 84, .06);
+  }
+
+  .project__visual-caption i {
+    grid-row: span 3;
+    color: var(--mockup-accent);
+    font-size: 1.45rem;
+  }
+
+  .project__visual-caption em {
+    color: var(--mockup-accent);
     font-style: normal;
     font-size: var(--smaller-font-size);
     font-weight: var(--font-medium);
@@ -244,26 +584,130 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
     text-transform: uppercase;
   }
 
-  .project__visual strong {
+  .project__visual-caption strong {
     color: var(--title-color);
-    font-size: clamp(1.35rem, 4vw, 2rem);
+    font-size: clamp(.86rem, 2.4vw, 1.05rem);
+    line-height: 1.1;
   }
 
-  .project__visual small {
+  .project__visual-caption small {
     color: var(--text-color-light);
     font-size: var(--small-font-size);
   }
 
-  .project__visual--technology {
-    background:
-      linear-gradient(rgba(255, 255, 255, .88), rgba(255, 255, 255, .88)),
-      repeating-linear-gradient(90deg, var(--first-color) 0 1px, transparent 1px 28px);
+  .project__visual--users,
+  .project__visual--workflow,
+  .project__visual--contact,
+  .project__visual--cash,
+  .project__visual--purchase {
+    --mockup-accent: hsl(188, 62%, 44%);
+    --mockup-soft: rgba(31, 161, 178, .12);
   }
 
-  .project__visual--impact {
+  .project__visual--content,
+  .project__visual--reports,
+  .project__visual--responsive,
+  .project__visual--production,
+  .project__visual--payments {
+    --mockup-accent: hsl(258, 52%, 58%);
+    --mockup-soft: rgba(118, 94, 199, .11);
+  }
+
+  .project__visual--attendance,
+  .project__visual--landing,
+  .project__visual--inventory,
+  .project__visual--tables {
+    --mockup-accent: hsl(var(--hue-color), 69%, 56%);
+    --mockup-soft: rgba(85, 157, 226, .14);
+  }
+
+  .project__mockup--reports .project__mockup-workspace,
+  .project__mockup--inventory .project__mockup-workspace,
+  .project__mockup--production .project__mockup-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project__mockup--reports .project__mockup-list,
+  .project__mockup--inventory .project__mockup-list,
+  .project__mockup--production .project__mockup-list {
+    gap: .28rem;
+  }
+
+  .project__mockup--reports .project__mockup-list b,
+  .project__mockup--inventory .project__mockup-list b,
+  .project__mockup--production .project__mockup-list b {
+    justify-content: space-between;
+    min-height: 1.18rem;
     background:
-      linear-gradient(155deg, rgba(85, 157, 226, .2), rgba(255, 255, 255, .96) 58%),
-      var(--container-color);
+      linear-gradient(90deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .3)),
+      rgba(41, 56, 75, .045);
+  }
+
+  .project__mockup--reports .project__mockup-flow,
+  .project__mockup--inventory .project__mockup-flow,
+  .project__mockup--production .project__mockup-flow {
+    display: none;
+  }
+
+  .project__mockup--landing,
+  .project__mockup--responsive {
+    grid-template-columns: 1fr minmax(3.5rem, 22%);
+  }
+
+  .project__mockup--landing .project__mockup-sidebar,
+  .project__mockup--responsive .project__mockup-sidebar {
+    grid-column: 2;
+    grid-row: 2;
+    border-left: 1px solid var(--mockup-line);
+  }
+
+  .project__mockup--landing .project__mockup-content,
+  .project__mockup--responsive .project__mockup-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .project__mockup--cash .project__mockup-flow,
+  .project__mockup--payments .project__mockup-flow {
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    justify-items: center;
+    gap: .45rem;
+  }
+
+  .project__mockup--cash .project__mockup-flow::before,
+  .project__mockup--payments .project__mockup-flow::before {
+    top: 50%;
+    bottom: auto;
+    left: 18%;
+    right: 18%;
+    width: auto;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+
+  .project__mockup--purchase .project__mockup-workspace,
+  .project__mockup--tables .project__mockup-workspace {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .project__mockup--purchase .project__mockup-list,
+  .project__mockup--tables .project__mockup-list {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .project__mockup--purchase .project__mockup-list b,
+  .project__mockup--tables .project__mockup-list b {
+    min-height: 3rem;
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+
+  .project__mockup--purchase .project__mockup-flow,
+  .project__mockup--tables .project__mockup-flow {
+    display: none;
   }
 
   .project__gallery-dots {
@@ -331,26 +775,6 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
     font-size: var(--smaller-font-size);
   }
 
-  .project__links {
-    display: flex;
-    gap: 1rem;
-    min-height: 1.5rem;
-  }
-
-  .project__links a {
-    display: inline-flex;
-    align-items: center;
-    gap: .3rem;
-    color: var(--first-color);
-    font-weight: var(--font-medium);
-    transition: color .25s ease, transform .25s ease;
-  }
-
-  .project__links a:hover {
-    color: var(--first-color-alt);
-    transform: translateX(2px);
-  }
-
   @media screen and (min-width: 768px) {
     .project {
       grid-template-columns: minmax(260px, 42%) minmax(0, 1fr);
@@ -368,8 +792,7 @@ const getProjectSlides = (project: (typeof projects)[number]) => {
       gap: 2rem;
     }
 
-    .project__media,
-    .project__slide img {
+    .project__media {
       min-height: 260px;
     }
   }
