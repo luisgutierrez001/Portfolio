@@ -2,13 +2,13 @@
 import { profile, translations } from '../data/profile';
 
 const navItems = [
-	{ href: '#home', label: 'Inicio', icon: 'uil-home', key: 'nav.home' },
-	{ href: '#about', label: 'Sobre mi', icon: 'uil-user', key: 'nav.about' },
-	{ href: '#skills', label: 'Habilidades', icon: 'uil-book-alt', key: 'nav.skills' },
-	{ href: '#projects', label: 'Proyectos', icon: 'uil-suitcase-alt', key: 'nav.projects' },
-	{ href: '#experience', label: 'Experiencia', icon: 'uil-briefcase-alt', key: 'nav.experience' },
-	{ href: '#certifications', label: 'Certs', icon: 'uil-award', key: 'nav.certifications' },
-	{ href: '#contact', label: 'Contacto', icon: 'uil-envelope-add', key: 'nav.contact' },
+	{ href: '/#home', label: 'Inicio', icon: 'uil-home', key: 'nav.home' },
+	{ href: '/#about', label: 'Sobre mi', icon: 'uil-user', key: 'nav.about' },
+	{ href: '/#skills', label: 'Habilidades', icon: 'uil-book-alt', key: 'nav.skills' },
+	{ href: '/#projects', label: 'Proyectos', icon: 'uil-suitcase-alt', key: 'nav.projects' },
+	{ href: '/#experience', label: 'Experiencia', icon: 'uil-briefcase-alt', key: 'nav.experience' },
+	{ href: '/certifications', label: 'Certs', icon: 'uil-award', key: 'nav.certifications' },
+	{ href: '/#contact', label: 'Contacto', icon: 'uil-envelope-add', key: 'nav.contact' },
 ];
 ---
 
@@ -17,7 +17,7 @@ const navItems = [
 <div>
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="#home" class="nav__logo">{profile.name}</a>
+      <a href="/#home" class="nav__logo">{profile.name}</a>
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list grid">

@@ -329,6 +329,26 @@ export const certifications = [
 		credentialUrl: '/certifications/MINDFULNEES-&-WORKLIFE-BALANCE.pdf',
 		downloadUrl: '/certifications/MINDFULNEES-&-WORKLIFE-BALANCE.pdf',
 	},
+	{
+		title: 'Becalos English Challenge - Voxy',
+		issuer: 'Becalos English Challenge / Voxy',
+		date: 'Abril 2026',
+		category: 'Ingles',
+		description:
+			'Constancia de avance en el programa Becalos English Challenge con Voxy, alcanzando nivel Intermediate B1 y fortaleciendo comunicacion en ingles.',
+		credentialUrl: '/certifications/Voxy-English-Certificate.pdf',
+		downloadUrl: '/certifications/Voxy-English-Certificate.pdf',
+	},
+	{
+		title: 'Beca Talent Land Mexico 2026',
+		issuer: 'Becalos',
+		date: 'Abril 2026',
+		category: 'Evento tecnologico',
+		description:
+			'Constancia de beca aprobada para Talent Land Mexico 2026, experiencia orientada a tecnologia, aprendizaje y conexion con la comunidad profesional.',
+		credentialUrl: '/certifications/Becalos-Talent-Land-Mexico-2026.pdf',
+		downloadUrl: '/certifications/Becalos-Talent-Land-Mexico-2026.pdf',
+	},
 ];
 
 export const contact = {
@@ -448,10 +468,8 @@ export const translations = {
 		'skills.group.3.title': 'Tools',
 		'skills.group.3.subtitle': 'Collaborative work and continuous improvement',
 		'skills.level.junior': 'Junior',
-		'skills.level.juniorAdvanced': 'Advanced Junior',
-		'skills.level.nearMiddle': 'Approaching Middle',
 		'skills.level.middle': 'Middle',
-		'skills.level.middleAdvanced': 'Advanced Middle',
+		'skills.level.senior': 'Senior',
 		'skills.item.APIs RESTful': 'RESTful APIs',
 		'skills.item.Microservicios': 'Microservices',
 		'skills.item.Autenticacion segura': 'Secure authentication',
@@ -573,6 +591,27 @@ export const translations = {
 		'certifications.6.category': 'Soft Skills',
 		'certifications.6.description':
 			'Training focused on professional balance, personal management and workplace well-being.',
+		'certifications.7.date': 'April 2026',
+		'certifications.7.category': 'English',
+		'certifications.7.description':
+			'Progress record from the Becalos English Challenge with Voxy, reaching Intermediate B1 and strengthening English communication.',
+		'certifications.8.date': 'April 2026',
+		'certifications.8.category': 'Technology event',
+		'certifications.8.description':
+			'Approved scholarship record for Talent Land Mexico 2026, an experience focused on technology, learning and professional community connection.',
+		'certifications.cta.title': 'Certifications',
+		'certifications.cta.subtitle': 'Optional credential library',
+		'certifications.cta.description':
+			'My certificates live in a separate view so the portfolio stays focused, but anyone who wants more detail can explore the full library.',
+		'certifications.cta.action': 'View certifications',
+		'certifications.cta.note': 'Credentials, courses and learning evidence',
+		'certifications.page.back': 'Back to portfolio',
+		'certifications.page.title': 'Certifications',
+		'certifications.page.subtitle': 'Credential library',
+		'certifications.page.intro':
+			'A more complete view of certificates, courses and learning experiences that support my technical growth, project management, English and professional development.',
+		'certifications.page.featured': 'Featured credentials',
+		'certifications.page.all': 'All credentials',
 		'contact.eyebrow': 'Contact',
 		'contact.title': 'Let us work together',
 		'contact.description':

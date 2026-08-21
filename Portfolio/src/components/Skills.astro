@@ -2,10 +2,8 @@
 import { skillGroups } from '../data/profile';
 
 const getSkillLevel = (score: number) => {
-  if (score >= 86) return { key: 'middleAdvanced', label: 'Middle avanzado' };
-  if (score >= 75) return { key: 'middle', label: 'Middle' };
-  if (score >= 67) return { key: 'nearMiddle', label: 'Cerca de Middle' };
-  if (score >= 62) return { key: 'juniorAdvanced', label: 'Junior avanzado' };
+  if (score >= 90) return { key: 'senior', label: 'Senior' };
+  if (score >= 70) return { key: 'middle', label: 'Middle' };
   return { key: 'junior', label: 'Junior' };
 };
 ---
